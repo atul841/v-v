@@ -1,0 +1,80 @@
+<h1>My Website</h1>
+<p>This is sample English content. Click Russian to translate this page.</p>
+
+<!-- Custom buttons -->
+<div class="lang-switch">
+  <button id="btn-en" type="button">English</button>
+  <button id="btn-ru" type="button">Russian</button>
+</div>
+
+<!-- Google Translate mount point (dropdown yahan inject hota hai) -->
+<div id="google_translate_element"></div>
+
+<script>
+  // 1) Widget init
+  function googleTranslateElementInit() {
+    new google.translate.TranslateElement(
+      {
+        pageLanguage: "en",
+        includedLanguages: "en,ru",
+        autoDisplay: false,
+      },
+      "google_translate_element"
+    );
+  }
+
+  // 2) Helper: dropdown (goog-te-combo) ko reliably pakdo (late load hota hai)
+  function getCombo(maxWaitMs = 5000) {
+    return new Promise((resolve, reject) => {
+      const existing = document.querySelector(".goog-te-combo");
+      if (existing) return resolve(existing);
+
+      const obs = new MutationObserver(() => {
+        const el = document.querySelector(".goog-te-combo");
+        if (el) {
+          obs.disconnect();
+          resolve(el);
+        }
+      });
+      obs.observe(document.body, { childList: true, subtree: true });
+
+      setTimeout(() => {
+        obs.disconnect();
+        const el = document.querySelector(".goog-te-combo");
+        el ? resolve(el) : reject(new Error("Translate dropdown not found"));
+      }, maxWaitMs);
+    });
+  }
+
+  // 3) Programmatic language switch
+  async function setLang(lang) {
+    try {
+      const combo = await getCombo();
+      if (combo.value === lang) {
+        // same lang selected; force change
+        combo.dispatchEvent(new Event("change"));
+        return;
+      }
+      combo.value = lang;
+      combo.dispatchEvent(new Event("change"));
+      document.body.classList.add("translating");
+    } catch (e) {
+      console.error(e);
+      alert("Translate widget load nahi hua. Neeche debugging steps dekho.");
+    }
+  }
+
+  // 4) Buttons wire-up
+  document
+    .getElementById("btn-en")
+    .addEventListener("click", () => setLang("en"));
+  document
+    .getElementById("btn-ru")
+    .addEventListener("click", () => setLang("ru"));
+
+  // 5) Required Google script (HTTPS use karo)
+</script>
+<script
+  src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
+  async=""
+></script>
