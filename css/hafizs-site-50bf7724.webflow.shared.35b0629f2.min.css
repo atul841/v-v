@@ -8184,13 +8184,13 @@ figcaption {
   max-width: 250px;
   display: flex;
 }
-.scroll_content-wrap {
+/* .scroll_content-wrap {
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
   justify-content: flex-start;
   display: flex;
   position: relative;
-}
+} */
 .scroll_content-row {
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;

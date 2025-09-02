@@ -318,3 +318,326 @@ a,
 }
 
 
+
+
+
+@media (max-width: 767px) {
+  .scroll_content-wrap { position: relative; }
+
+  .mobile-slide-arrows {
+    position: fixed;
+    top: 50%;
+    left: 0;
+    right: 0;
+    pointer-events: none;
+    z-index: 1000;
+  }
+
+  .mobile-slide-arrows .ms-arrow {
+    pointer-events: auto;
+    position: absolute;
+    transform: translateY(-50%);
+    width: 44px;
+    height: 44px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0,0,0,0.6);
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .ms-left { left: 8px; }
+  .ms-right { right: 8px; }
+
+  .scroll_content-row {
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    gap: 0;
+    padding: 12px 0;
+  }
+  .scroll_content-row::-webkit-scrollbar { display: none; }
+
+  .scroll_content-item {
+    flex: 0 0 88vw;
+    margin: 0 6vw;
+    scroll-snap-align: center;
+  }
+  .button-bg-wrap-06[style*="width:0px"] { display: none; }
+}
+
+@media (min-width: 768px) {
+  .mobile-slide-arrows { display: none; }
+}
+
+
+.goog-te-banner-frame.skiptranslate {
+        display: none !important;
+      }
+
+      body {
+        top: 0 !important;
+      }
+
+      #google_translate_element,
+      .goog-te-gadget,
+      .goog-te-gadget-simple,
+      .goog-te-combo,
+      .goog-te-balloon-frame,
+      #goog-gt-tt,
+      .goog-logo-link,
+      .skiptranslate {
+        display: none !important;
+      }
+
+
+
+        /* Make text look crisper and more legible in all browsers */
+        body {
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          font-smoothing: antialiased;
+          text-rendering: optimizeLegibility;
+          overflow-x: clip;
+        }
+
+        /* Focus state style for keyboard navigation for the focusable elements */
+        *[tabindex]:focus-visible,
+        input[type="file"]:focus-visible {
+          outline: 0.125rem solid #4d65ff;
+          outline-offset: 0.125rem;
+        }
+
+        /* Get rid of top margin on first element in any rich text element */
+        .w-richtext> :not(div):first-child,
+        .w-richtext>div:first-child> :first-child {
+          margin-top: 0 !important;
+        }
+
+        /* Get rid of bottom margin on last element in any rich text element */
+        .w-richtext>:last-child,
+        .w-richtext ol li:last-child,
+        .w-richtext ul li:last-child {
+          margin-bottom: 0 !important;
+        }
+
+        /* Prevent all click and hover interaction with an element */
+        .pointer-events-off {
+          pointer-events: none;
+        }
+
+        /* Enables all click and hover interaction with an element */
+        .pointer-events-on {
+          pointer-events: auto;
+        }
+
+        /* Create a class of .div-square which maintains a 1:1 dimension of a div */
+        .div-square::after {
+          content: "";
+          display: block;
+          padding-bottom: 100%;
+        }
+
+        /* Make sure containers never lose their center alignment */
+        .container-medium,
+        .container-small,
+        .container-large {
+          margin-right: auto !important;
+          margin-left: auto !important;
+        }
+
+
+
+
+        /* Apply "..." after 3 lines of text */
+        .text-style-3lines {
+          display: -webkit-box;
+          overflow: hidden;
+          -webkit-line-clamp: 3;
+          -webkit-box-orient: vertical;
+        }
+
+        /* Apply "..." after 2 lines of text */
+        .text-style-2lines {
+          display: -webkit-box;
+          overflow: hidden;
+          -webkit-line-clamp: 2;
+          -webkit-box-orient: vertical;
+        }
+
+        /* Adds inline flex display */
+        .display-inlineflex {
+          display: inline-flex;
+        }
+
+        /* These classes are never overwritten */
+        .hide {
+          display: none !important;
+        }
+
+        @media screen and (max-width: 991px) {
+
+          .hide,
+          .hide-tablet {
+            display: none !important;
+          }
+        }
+
+        @media screen and (max-width: 767px) {
+          .hide-mobile-landscape {
+            display: none !important;
+          }
+        }
+
+        @media screen and (max-width: 479px) {
+          .hide-mobile {
+            display: none !important;
+          }
+        }
+
+        .margin-0 {
+          margin: 0rem !important;
+        }
+
+        .padding-0 {
+          padding: 0rem !important;
+        }
+
+        .spacing-clean {
+          padding: 0rem !important;
+          margin: 0rem !important;
+        }
+
+        .margin-top {
+          margin-right: 0rem !important;
+          margin-bottom: 0rem !important;
+          margin-left: 0rem !important;
+        }
+
+        .padding-top {
+          padding-right: 0rem !important;
+          padding-bottom: 0rem !important;
+          padding-left: 0rem !important;
+        }
+
+        .margin-right {
+          margin-top: 0rem !important;
+          margin-bottom: 0rem !important;
+          margin-left: 0rem !important;
+        }
+
+        .padding-right {
+          padding-top: 0rem !important;
+          padding-bottom: 0rem !important;
+          padding-left: 0rem !important;
+        }
+
+        .margin-bottom {
+          margin-top: 0rem !important;
+          margin-right: 0rem !important;
+          margin-left: 0rem !important;
+        }
+
+        .padding-bottom {
+          padding-top: 0rem !important;
+          padding-right: 0rem !important;
+          padding-left: 0rem !important;
+        }
+
+        .margin-left {
+          margin-top: 0rem !important;
+          margin-right: 0rem !important;
+          margin-bottom: 0rem !important;
+        }
+
+        .padding-left {
+          padding-top: 0rem !important;
+          padding-right: 0rem !important;
+          padding-bottom: 0rem !important;
+        }
+
+        .margin-horizontal {
+          margin-top: 0rem !important;
+          margin-bottom: 0rem !important;
+        }
+
+        .padding-horizontal {
+          padding-top: 0rem !important;
+          padding-bottom: 0rem !important;
+        }
+
+        .margin-vertical {
+          margin-right: 0rem !important;
+          margin-left: 0rem !important;
+        }
+
+        .padding-vertical {
+          padding-right: 0rem !important;
+          padding-left: 0rem !important;
+        }
+
+        .dash_line {
+          pointer-events: none;
+        }
+
+        .text-vertical {
+
+          writing-mode: vertical-rl;
+          text-orientation: mixed;
+
+        }
+
+        ::selection {
+          color: #000000;
+          background: #fffd63;
+        }
+
+        ::-webkit-scrollbar {
+          width: 0.75rem;
+        }
+
+        ::-webkit-scrollbar-track {
+          background-color: #101016;
+          opacity: 0.1;
+        }
+
+        ::-webkit-scrollbar-thumb {
+          background-color: #fffd63;
+          border: 2px solid #18151C;
+        }
+ .text-size-regular.subheader {
+                        max-width: 1200px;
+                        width: 90%;
+                        margin: 0 auto;
+                        line-height: 1.3;
+                        font-size: 1rem;
+                      }
+
+                      /* Tablet screen */
+                      @media (max-width: 768px) {
+                        .text-size-regular.subheader {
+                          max-width: 95%;
+                          font-size: 0.95rem;
+                          line-height: 1.25;
+                        }
+                      }
+
+                      /* Mobile screen */
+                      @media (max-width: 480px) {
+                        .text-size-regular.subheader {
+                          max-width: 100%;
+                          font-size: 0.9rem;
+                          line-height: 1.2;
+                        }
+                      }     
+                      
+                      
+
+/* scrolling option add  */
+
+
+

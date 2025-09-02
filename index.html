@@ -28,32 +28,15 @@
 
   <link rel="stylesheet" href="./css/style.css">
 
-  <!-- Google tag (gtag.js) -->
+ 
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-RQFY657YJ2"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag() { dataLayer.push(arguments); }
-    gtag('js', new Date());
-
-    gtag('config', 'G-RQFY657YJ2');
-  </script>
+  
 
   <meta name="google-site-verification" content="FYCt75hhuWvPaY8sLNWX4pXaH9yEFac6gsA2K_mZfUQ">
 
-  <!-- Google Tag Manager -->
-  <script>(function (w, d, s, l, i) {
-      w[l] = w[l] || []; w[l].push({
-        'gtm.start':
-          new Date().getTime(), event: 'gtm.js'
-      }); var f = d.getElementsByTagName(s)[0],
-        j = d.createElement(s), dl = l != 'dataLayer' ? '&l=' + l : ''; j.async = true; j.src =
-          'https://www.googletagmanager.com/gtm.js?id=' + i + dl; f.parentNode.insertBefore(j, f);
-    })(window, document, 'script', 'dataLayer', 'GTM-5CWM69JZ');</script>
-  <!-- End Google Tag Manager -->
-
-  <!-- Memberstack webflow package -->
+  
   <script data-memberstack-app="app_clnk2n9i0001y0t615bq07a1w" src="js/memberstack.js" type="text/javascript"></script>
-  <!-- [Attributes by Finsweet] CMS Filter -->
+
   <script async src="js/cmsfilter.js"></script>
 </head>
 
@@ -89,401 +72,26 @@
 
     </nav>
 
-    <!-- Add this tiny script at the end of <body> (optional, just for shadow) -->
-    <script>
-      (function () {
-        const nav = document.querySelector('.section_navbar');
-        if (!nav) return;
-        const sentinel = document.createElement('div');
-        sentinel.style.height = '1px';
-        nav.parentNode.insertBefore(sentinel, nav);
-
-        const io = new IntersectionObserver(([e]) => {
-          if (e.isIntersecting) { nav.classList.remove('is-stuck'); }
-          else { nav.classList.add('is-stuck'); }
-        }, { threshold: 1 });
-        io.observe(sentinel);
-      })();
-    </script>
+    
+    
 
     <!-- traslate ka kam yaha se start hai  -->
 
     <div id="google_translate_element" style="display:none;"></div>
-    <style>
-      .goog-te-banner-frame.skiptranslate {
-        display: none !important;
-      }
+    
 
-      body {
-        top: 0 !important;
-      }
-
-      #google_translate_element,
-      .goog-te-gadget,
-      .goog-te-gadget-simple,
-      .goog-te-combo,
-      .goog-te-balloon-frame,
-      #goog-gt-tt,
-      .goog-logo-link,
-      .skiptranslate {
-        display: none !important;
-      }
-    </style>
-
-    <script>
-
-
-
-      // 1) Init hidden Google Translate
-      function googleTranslateElementInit() {
-        new google.translate.TranslateElement({
-          pageLanguage: 'en',
-          includedLanguages: 'en,ru',
-          autoDisplay: false
-        }, 'google_translate_element');
-      }
-
-      // 2) Try switching via hidden select 
-      function setGTLanguage(lang) {
-        const combo = document.querySelector('select.goog-te-combo');
-        if (!combo) return false;
-        combo.value = lang;
-        combo.dispatchEvent(new Event('change'));
-        return true;
-      }
-
-      // 3) Fallback: set cookie then reload (if widget not ready yet)
-      function setGTCookieAndReload(lang) {
-        const value = '/en/' + lang;
-        const expires = new Date(Date.now() + 365 * 24 * 60 * 60 * 1000).toUTCString();
-
-        // domain cookie (for real domains)
-        const host = location.hostname;
-        const isLocal = host === 'localhost' || host === '127.0.0.1';
-        if (!isLocal) {
-          const domain = host.replace(/^www\./, '');
-          document.cookie = 'googtrans=' + value + '; expires=' + expires + '; path=/; domain=.' + domain;
-        }
-        // path-only cookie (works everywhere)
-        document.cookie = 'googtrans=' + value + '; expires=' + expires + '; path=/';
-
-        location.reload();
-      }
-
-      // 4) Smooth switch: wait up to 2s for widget, else cookie fallback
-      async function switchLanguage(lang) {
-        const maxWait = 2000, start = performance.now();
-        while (performance.now() - start < maxWait) {
-          if (setGTLanguage(lang)) return;
-          await new Promise(r => setTimeout(r, 100));
-        }
-        setGTCookieAndReload(lang);
-      }
-
-      // 5) Freeze button labels (never let them get translated)
-      function freezeLabels() {
-        document.querySelectorAll('[data-fixed-label]').forEach(btn => {
-          const fixed = btn.getAttribute('data-fixed-label');
-          const span = btn.querySelector('.notranslate') || btn;
-          if (span.textContent !== fixed) span.textContent = fixed;
-        });
-      }
-      const mo = new MutationObserver(freezeLabels);
-      mo.observe(document.body, { subtree: true, childList: true, characterData: true });
-      document.addEventListener('DOMContentLoaded', freezeLabels);
-
-      // 6) Wire clicks
-      document.addEventListener('click', (e) => {
-        const btn = e.target.closest('[data-gt-lang]');
-        if (!btn) return;
-        e.preventDefault();
-        switchLanguage(btn.getAttribute('data-gt-lang'));
-      });
-    </script>
+   
 
     <!-- traslate ka work end ho gaya hai okk  -->
 
-    <script>
-      // ऑन-पेज लोड: पिछली चुनी भाषा रखें, नहीं तो 'en'
-      const DEFAULT_LANG = 'en';
-      const supported = ['en', 'ru'];
-
-      // पेज में सभी translate-able elements: data-i18n="path.to.key"
-      function applyTranslations(dict) {
-        document.querySelectorAll('[data-i18n]').forEach(el => {
-          const path = el.getAttribute('data-i18n'); // e.g. "home.title"
-          const text = path.split('.').reduce((acc, key) => acc && acc[key], dict);
-          if (typeof text === 'string') {
-            el.textContent = text;
-          }
-        });
-      }
-
-      async function setLanguage(lang) {
-        if (!supported.includes(lang)) lang = DEFAULT_LANG;
-        try {
-          const res = await fetch(`/i18n/${lang}.json`, { cache: 'no-store' });
-          const dict = await res.json();
-          applyTranslations(dict);
-          localStorage.setItem('lang', lang);
-
-          // (optional) html lang attribute अपडेट करें
-          document.documentElement.setAttribute('lang', lang);
-
-          // (optional) अगर direction बदलनी हो (ar/en तरह), तो:
-          // const dir = (lang === 'ar' || lang === 'he') ? 'rtl' : 'ltr';
-          // document.documentElement.setAttribute('dir', dir);
-        } catch (e) {
-          console.error('Translation load error:', e);
-        }
-      }
-
-      // बटनों पर click handlers
-      function wireLanguageButtons() {
-        document.querySelectorAll('[data-lang]').forEach(btn => {
-          btn.addEventListener('click', e => {
-            e.preventDefault();
-            setLanguage(btn.getAttribute('data-lang'));
-          });
-        });
-      }
-
-      // init
-      (function initI18n() {
-        wireLanguageButtons();
-        const saved = localStorage.getItem('lang') || DEFAULT_LANG;
-        setLanguage(saved);
-      })();
-    </script>
+    
 
     <div class="global-styles w-embed">
-      <script>
-
-
-        // 4) Buttons wire-up
-        document.getElementById('btn-en').addEventListener('click', () => setLang('en'));
-        document.getElementById('btn-ru').addEventListener('click', () => setLang('ru'));
-
-        // 5) Required Google script (HTTPS use karo)
-      </script>
+      
 
       <script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=googleTranslateElementInit">
       </script>
-      <style>
-        /* Make text look crisper and more legible in all browsers */
-        body {
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-          font-smoothing: antialiased;
-          text-rendering: optimizeLegibility;
-          overflow-x: clip;
-        }
-
-        /* Focus state style for keyboard navigation for the focusable elements */
-        *[tabindex]:focus-visible,
-        input[type="file"]:focus-visible {
-          outline: 0.125rem solid #4d65ff;
-          outline-offset: 0.125rem;
-        }
-
-        /* Get rid of top margin on first element in any rich text element */
-        .w-richtext> :not(div):first-child,
-        .w-richtext>div:first-child> :first-child {
-          margin-top: 0 !important;
-        }
-
-        /* Get rid of bottom margin on last element in any rich text element */
-        .w-richtext>:last-child,
-        .w-richtext ol li:last-child,
-        .w-richtext ul li:last-child {
-          margin-bottom: 0 !important;
-        }
-
-        /* Prevent all click and hover interaction with an element */
-        .pointer-events-off {
-          pointer-events: none;
-        }
-
-        /* Enables all click and hover interaction with an element */
-        .pointer-events-on {
-          pointer-events: auto;
-        }
-
-        /* Create a class of .div-square which maintains a 1:1 dimension of a div */
-        .div-square::after {
-          content: "";
-          display: block;
-          padding-bottom: 100%;
-        }
-
-        /* Make sure containers never lose their center alignment */
-        .container-medium,
-        .container-small,
-        .container-large {
-          margin-right: auto !important;
-          margin-left: auto !important;
-        }
-
-
-
-
-        /* Apply "..." after 3 lines of text */
-        .text-style-3lines {
-          display: -webkit-box;
-          overflow: hidden;
-          -webkit-line-clamp: 3;
-          -webkit-box-orient: vertical;
-        }
-
-        /* Apply "..." after 2 lines of text */
-        .text-style-2lines {
-          display: -webkit-box;
-          overflow: hidden;
-          -webkit-line-clamp: 2;
-          -webkit-box-orient: vertical;
-        }
-
-        /* Adds inline flex display */
-        .display-inlineflex {
-          display: inline-flex;
-        }
-
-        /* These classes are never overwritten */
-        .hide {
-          display: none !important;
-        }
-
-        @media screen and (max-width: 991px) {
-
-          .hide,
-          .hide-tablet {
-            display: none !important;
-          }
-        }
-
-        @media screen and (max-width: 767px) {
-          .hide-mobile-landscape {
-            display: none !important;
-          }
-        }
-
-        @media screen and (max-width: 479px) {
-          .hide-mobile {
-            display: none !important;
-          }
-        }
-
-        .margin-0 {
-          margin: 0rem !important;
-        }
-
-        .padding-0 {
-          padding: 0rem !important;
-        }
-
-        .spacing-clean {
-          padding: 0rem !important;
-          margin: 0rem !important;
-        }
-
-        .margin-top {
-          margin-right: 0rem !important;
-          margin-bottom: 0rem !important;
-          margin-left: 0rem !important;
-        }
-
-        .padding-top {
-          padding-right: 0rem !important;
-          padding-bottom: 0rem !important;
-          padding-left: 0rem !important;
-        }
-
-        .margin-right {
-          margin-top: 0rem !important;
-          margin-bottom: 0rem !important;
-          margin-left: 0rem !important;
-        }
-
-        .padding-right {
-          padding-top: 0rem !important;
-          padding-bottom: 0rem !important;
-          padding-left: 0rem !important;
-        }
-
-        .margin-bottom {
-          margin-top: 0rem !important;
-          margin-right: 0rem !important;
-          margin-left: 0rem !important;
-        }
-
-        .padding-bottom {
-          padding-top: 0rem !important;
-          padding-right: 0rem !important;
-          padding-left: 0rem !important;
-        }
-
-        .margin-left {
-          margin-top: 0rem !important;
-          margin-right: 0rem !important;
-          margin-bottom: 0rem !important;
-        }
-
-        .padding-left {
-          padding-top: 0rem !important;
-          padding-right: 0rem !important;
-          padding-bottom: 0rem !important;
-        }
-
-        .margin-horizontal {
-          margin-top: 0rem !important;
-          margin-bottom: 0rem !important;
-        }
-
-        .padding-horizontal {
-          padding-top: 0rem !important;
-          padding-bottom: 0rem !important;
-        }
-
-        .margin-vertical {
-          margin-right: 0rem !important;
-          margin-left: 0rem !important;
-        }
-
-        .padding-vertical {
-          padding-right: 0rem !important;
-          padding-left: 0rem !important;
-        }
-
-        .dash_line {
-          pointer-events: none;
-        }
-
-        .text-vertical {
-
-          writing-mode: vertical-rl;
-          text-orientation: mixed;
-
-        }
-
-        ::selection {
-          color: #000000;
-          background: #fffd63;
-        }
-
-        ::-webkit-scrollbar {
-          width: 0.75rem;
-        }
-
-        ::-webkit-scrollbar-track {
-          background-color: #101016;
-          opacity: 0.1;
-        }
-
-        ::-webkit-scrollbar-thumb {
-          background-color: #fffd63;
-          border: 2px solid #18151C;
-        }
-      </style>
+      
     </div>
 
     <!-- traslate in goole from here that  -->
@@ -493,7 +101,7 @@
         <header class="section_header">
           <div class="header_review-block">
             <div class="div-block-51">
-              <div class="review-block_text">✦ 7100+ Interactions copied
+              <div class="review-block_text">✦ 66,000+ Interactions copied
                 ✦</div>
             </div>
           </div>
@@ -527,33 +135,7 @@
                       India–Russia collaboration. Start with just ₹7,000 and
                       watch your future multiply. <span class="yellow-span">
                       </span></div>
-                    <style>
-                      .text-size-regular.subheader {
-                        max-width: 1200px;
-                        width: 90%;
-                        margin: 0 auto;
-                        line-height: 1.3;
-                        font-size: 1rem;
-                      }
-
-                      /* Tablet screen */
-                      @media (max-width: 768px) {
-                        .text-size-regular.subheader {
-                          max-width: 95%;
-                          font-size: 0.95rem;
-                          line-height: 1.25;
-                        }
-                      }
-
-                      /* Mobile screen */
-                      @media (max-width: 480px) {
-                        .text-size-regular.subheader {
-                          max-width: 100%;
-                          font-size: 0.9rem;
-                          line-height: 1.2;
-                        }
-                      }
-                    </style>
+                    
                     <div class="spacer-small"></div>
                     <div class="header_button-wrap" style="background-color: rgb(248, 249, 250); border-radius: 5px;"><a
                         href="#pricing" data-w-id="89b984fc-2cda-84c4-7712-a3717d03ccc4"
@@ -584,323 +166,108 @@
             </div>
           </div>
         </header>
-        <div class="base_content-wrap">
-          <div data-w-id="14749e57-e962-7bc0-aef0-45cfa607dd35" class="scroll_content-wrap">
-            <div class="scroll_content-row">
-              <div class="scroll_content-item">
-                <a data-w-id="be48a995-2537-8c21-8e19-437718537564" href="#"
-                  class="button-hover-50 primary is-default w-inline-block">
-                  <div class="button-text-50 is-default">Get Started</div>
-                  <div class="button-dot-50">
-                    <div class="dot-50 is-default"></div>
-                    <div
-                      style="-webkit-transform:translate3d(-120%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-120%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-120%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-120%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                      class="button-icon-50 w-embed"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                          d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                          fill="currentColor"></path>
-                      </svg></div>
-                  </div>
-                </a><button data-w-id="2b1e7619-56b9-3b69-9040-3c83dfc5a0bf" class="button-hover-51 is-default">
-                  <div style="opacity:0" class="button-gradient-51"></div>
-                  <div class="button-inner-51">
-                    <div class="button-icon-wrap-51">
-                      <div
-                        style="-webkit-transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                        class="button-icon-51 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="16"
-                          viewBox="0 0 693 531" fill="none">
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M518.983 132.708L471.983 38.7083C446.317 -12.2917 404.983 -12.2917 379.317 38.3749L332.317 132.375C325.983 145.375 308.983 158.042 294.65 160.375L209.648 174.375C155.315 183.708 142.648 223.043 181.648 262.043L247.982 328.377C258.982 339.377 265.315 361.043 262.315 377.043L243.315 459.043C228.315 523.71 262.982 548.71 319.983 515.043L399.65 467.71C413.983 459.043 437.983 459.043 452.317 467.71L531.983 515.043C588.983 549.043 623.65 523.71 608.65 459.043L589.65 377.043C585.983 361.377 592.317 339.71 603.317 328.71L669.65 262.377C708.65 223.043 695.983 183.708 641.65 174.708L556.65 160.708C542.317 158.042 525.317 145.708 518.983 132.708ZM25.6665 56.6666H225.666C239.333 56.6666 250.666 45.3333 250.666 31.6666C250.666 18 239.333 6.66663 225.666 6.66663H25.6665C11.9998 6.66663 0.666504 18 0.666504 31.6666C0.666504 45.3333 11.9998 56.6666 25.6665 56.6666ZM125.666 523.333H25.6665C11.9998 523.333 0.666504 512 0.666504 498.333C0.666504 484.667 11.9998 473.333 25.6665 473.333H125.666C139.333 473.333 150.667 484.667 150.667 498.333C150.667 512 139.333 523.333 125.666 523.333ZM25.6665 290H58.9998C72.6665 290 83.9998 278.667 83.9998 265C83.9998 251.333 72.6665 240 58.9998 240H25.6665C11.9998 240 0.666504 251.333 0.666504 265C0.666504 278.667 11.9998 290 25.6665 290Z"
-                            fill="currentColor"></path>
-                        </svg></div>
-                      <div
-                        style="-webkit-transform:translate3d(-150%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-150%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-150%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-150%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                        class="button-icon-51 is-absolute w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="22"
-                          height="16" viewBox="0 0 693 531" fill="none">
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M518.983 132.708L471.983 38.7083C446.317 -12.2917 404.983 -12.2917 379.317 38.3749L332.317 132.375C325.983 145.375 308.983 158.042 294.65 160.375L209.648 174.375C155.315 183.708 142.648 223.043 181.648 262.043L247.982 328.377C258.982 339.377 265.315 361.043 262.315 377.043L243.315 459.043C228.315 523.71 262.982 548.71 319.983 515.043L399.65 467.71C413.983 459.043 437.983 459.043 452.317 467.71L531.983 515.043C588.983 549.043 623.65 523.71 608.65 459.043L589.65 377.043C585.983 361.377 592.317 339.71 603.317 328.71L669.65 262.377C708.65 223.043 695.983 183.708 641.65 174.708L556.65 160.708C542.317 158.042 525.317 145.708 518.983 132.708ZM25.6665 56.6666H225.666C239.333 56.6666 250.666 45.3333 250.666 31.6666C250.666 18 239.333 6.66663 225.666 6.66663H25.6665C11.9998 6.66663 0.666504 18 0.666504 31.6666C0.666504 45.3333 11.9998 56.6666 25.6665 56.6666ZM125.666 523.333H25.6665C11.9998 523.333 0.666504 512 0.666504 498.333C0.666504 484.667 11.9998 473.333 25.6665 473.333H125.666C139.333 473.333 150.667 484.667 150.667 498.333C150.667 512 139.333 523.333 125.666 523.333ZM25.6665 290H58.9998C72.6665 290 83.9998 278.667 83.9998 265C83.9998 251.333 72.6665 240 58.9998 240H25.6665C11.9998 240 0.666504 251.333 0.666504 265C0.666504 278.667 11.9998 290 25.6665 290Z"
-                            fill="currentColor"></path>
-                        </svg></div>
-                    </div>
-                    <div class="button-text-51 is-default">EXPLORE</div>
-                  </div>
-                </button><a data-w-id="35daef8b-a7c2-920e-85f9-5ac77fa5feff" style="background-color:rgba(0,0,0,0)"
-                  href="#" class="button-block-25 w-inline-block">
-                  <div
-                    style="-webkit-transform:translate3d(-200%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-200%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-200%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-200%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);color:rgb(240,240,240);opacity:0"
-                    class="button-text-25-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="120" height="55"
-                      viewBox="0 0 120 55" fill="none">
-                      <path
-                        d="M95.2389 0.989578C93.8845 -0.376811 91.7407 -0.321332 90.4505 1.11345C89.1602 2.54775 89.2126 4.81806 90.5674 6.18445L95.2389 0.989578ZM114.277 30.0975C115.631 31.4638 117.775 31.4084 119.066 29.9736C120.356 28.5393 120.303 26.269 118.949 24.9026L114.277 30.0975ZM118.949 30.0975C120.303 28.7311 120.356 26.4608 119.066 25.0265C117.775 23.5917 115.631 23.5362 114.277 24.9026L118.949 30.0975ZM90.5674 48.8156C89.2126 50.1818 89.1602 52.4522 90.4505 53.8868C91.7407 55.3213 93.8845 55.3767 95.2389 54.0105L90.5674 48.8156ZM116.613 31.087C118.483 31.087 120 29.481 120 27.5C120 25.5191 118.483 23.9131 116.613 23.9131L116.613 31.087ZM3.38709 25.894C1.51647 25.894 -1.20206e-06 27.5 -1.11547e-06 29.481C-1.02888e-06 31.4619 1.51647 33.0679 3.38709 33.0679L3.38709 25.894ZM90.5674 6.18445L114.277 30.0975L118.949 24.9026L95.2389 0.989578L90.5674 6.18445ZM114.277 24.9026L90.5674 48.8156L95.2389 54.0105L118.949 30.0975L114.277 24.9026ZM116.613 23.9131L3.38709 25.894L3.38709 33.0679L116.613 31.087L116.613 23.9131Z"
-                        fill="currentColor"></path>
-                    </svg></div>
-                  <div
-                    style="opacity:1;-webkit-transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                    class="button-text-25">Talk to us</div>
-                </a>
-              </div>
-              <div class="scroll_content-item"><a data-w-id="a366ab50-c6c5-396c-9517-5e8dcf223b2a"
-                  style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                  href="#" class="button-block-18 secondary is-default w-inline-block">
-                  <div class="button-icon-wrap-18 is-default">
-                    <div
-                      style="-webkit-transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                      class="button-text-18-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                          d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                          fill="currentColor"></path>
-                      </svg></div>
-                    <div
-                      style="-webkit-transform:translate3d(-250%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-250%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-250%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-250%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                      class="button-text-18-icon is-absolute w-embed"><svg xmlns="http://www.w3.org/2000/svg"
-                        height="1em"
-                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                          d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                          fill="currentColor"></path>
-                      </svg></div>
-                  </div>
-                  <div class="button-text-wrap-18">
-                    <div class="button-text-18 is-default is-white">Get in
-                      touch</div>
-                    <div class="button-text-18 is-absolute is-default">Get
-                      in
-                      touch</div>
-                    <div class="button-overlay-18 is-white"></div>
-                  </div>
-                </a><a data-w-id="32520732-f8d4-9b76-7aa0-7fdcf6739814"
-                  style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                  href="#" class="button-block-18 primary is-default w-inline-block">
-                  <div class="button-text-wrap-18">
-                    <div class="button-text-18 is-default">Get in
-                      touch</div>
-                    <div class="button-text-18 is-absolute is-default">Get
-                      in
-                      touch</div>
-                    <div
-                      style="-webkit-transform:translate3d(0, 101%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 101%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 101%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 101%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                      class="button-overlay-18"></div>
-                  </div>
-                  <div class="button-icon-wrap-18 is-default">
-                    <div
-                      style="-webkit-transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                      class="button-text-18-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                          d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                          fill="currentColor"></path>
-                      </svg></div>
-                    <div
-                      style="-webkit-transform:translate3d(-250%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-250%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-250%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-250%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                      class="button-text-18-icon is-absolute w-embed"><svg xmlns="http://www.w3.org/2000/svg"
-                        height="1em"
-                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                          d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                          fill="currentColor"></path>
-                      </svg></div>
-                  </div>
-                </a><a data-w-id="55ba28ee-4285-4598-9708-13273fcfc8c2"
-                  style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                  href="#" class="button-block-18 text-link is-default w-inline-block">
-                  <div class="button-text-wrap-18 text-link">
-                    <div class="button-text-18 is-default">Get in
-                      touch</div>
-                    <div class="button-text-18 is-absolute is-default">Get
-                      in
-                      touch</div>
-                    <div
-                      style="-webkit-transform:translate3d(0, 101%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0, 101%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0, 101%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0, 101%, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                      class="button-overlay-18"></div>
-                  </div>
-                </a>
-                <div class="collection-span">collection</div>
-              </div>
-              <div class="scroll_content-item"><a data-w-id="f58d1989-2c61-8910-ec79-739cb7533776" href="#"
-                  class="button-block-27 text-arrow is-default w-inline-block">
-                  <div class="button-text-27 is-default">Get in touch</div>
-                  <div class="button-icon-wrap-27">
-                    <div
-                      style="-webkit-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0deg) skew(0, 0);-moz-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0deg) skew(0, 0);-ms-transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0deg) skew(0, 0);transform:translate3d(0, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0deg) skew(0, 0);color:rgb(255,255,255)"
-                      class="trythis-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                          d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                          fill="currentColor"></path>
-                      </svg></div>
-                    <div class="button-icon-bg-27 secondary"></div>
-                  </div>
-                </a><button data-w-id="f58d1989-2c61-8910-ec79-739cb7533782"
-                  class="button-hover-51 text-link is-default">
-                  <div class="button-inner-51">
-                    <div class="button-icon-wrap-51">
-                      <div
-                        style="-webkit-transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                        class="button-icon-51 w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="22" height="16"
-                          viewBox="0 0 693 531" fill="none">
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M518.983 132.708L471.983 38.7083C446.317 -12.2917 404.983 -12.2917 379.317 38.3749L332.317 132.375C325.983 145.375 308.983 158.042 294.65 160.375L209.648 174.375C155.315 183.708 142.648 223.043 181.648 262.043L247.982 328.377C258.982 339.377 265.315 361.043 262.315 377.043L243.315 459.043C228.315 523.71 262.982 548.71 319.983 515.043L399.65 467.71C413.983 459.043 437.983 459.043 452.317 467.71L531.983 515.043C588.983 549.043 623.65 523.71 608.65 459.043L589.65 377.043C585.983 361.377 592.317 339.71 603.317 328.71L669.65 262.377C708.65 223.043 695.983 183.708 641.65 174.708L556.65 160.708C542.317 158.042 525.317 145.708 518.983 132.708ZM25.6665 56.6666H225.666C239.333 56.6666 250.666 45.3333 250.666 31.6666C250.666 18 239.333 6.66663 225.666 6.66663H25.6665C11.9998 6.66663 0.666504 18 0.666504 31.6666C0.666504 45.3333 11.9998 56.6666 25.6665 56.6666ZM125.666 523.333H25.6665C11.9998 523.333 0.666504 512 0.666504 498.333C0.666504 484.667 11.9998 473.333 25.6665 473.333H125.666C139.333 473.333 150.667 484.667 150.667 498.333C150.667 512 139.333 523.333 125.666 523.333ZM25.6665 290H58.9998C72.6665 290 83.9998 278.667 83.9998 265C83.9998 251.333 72.6665 240 58.9998 240H25.6665C11.9998 240 0.666504 251.333 0.666504 265C0.666504 278.667 11.9998 290 25.6665 290Z"
-                            fill="currentColor"></path>
-                        </svg></div>
-                      <div
-                        style="-webkit-transform:translate3d(-150%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-150%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-150%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-150%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                        class="button-icon-51 is-absolute w-embed"><svg xmlns="http://www.w3.org/2000/svg" width="22"
-                          height="16" viewBox="0 0 693 531" fill="none">
-                          <path fill-rule="evenodd" clip-rule="evenodd"
-                            d="M518.983 132.708L471.983 38.7083C446.317 -12.2917 404.983 -12.2917 379.317 38.3749L332.317 132.375C325.983 145.375 308.983 158.042 294.65 160.375L209.648 174.375C155.315 183.708 142.648 223.043 181.648 262.043L247.982 328.377C258.982 339.377 265.315 361.043 262.315 377.043L243.315 459.043C228.315 523.71 262.982 548.71 319.983 515.043L399.65 467.71C413.983 459.043 437.983 459.043 452.317 467.71L531.983 515.043C588.983 549.043 623.65 523.71 608.65 459.043L589.65 377.043C585.983 361.377 592.317 339.71 603.317 328.71L669.65 262.377C708.65 223.043 695.983 183.708 641.65 174.708L556.65 160.708C542.317 158.042 525.317 145.708 518.983 132.708ZM25.6665 56.6666H225.666C239.333 56.6666 250.666 45.3333 250.666 31.6666C250.666 18 239.333 6.66663 225.666 6.66663H25.6665C11.9998 6.66663 0.666504 18 0.666504 31.6666C0.666504 45.3333 11.9998 56.6666 25.6665 56.6666ZM125.666 523.333H25.6665C11.9998 523.333 0.666504 512 0.666504 498.333C0.666504 484.667 11.9998 473.333 25.6665 473.333H125.666C139.333 473.333 150.667 484.667 150.667 498.333C150.667 512 139.333 523.333 125.666 523.333ZM25.6665 290H58.9998C72.6665 290 83.9998 278.667 83.9998 265C83.9998 251.333 72.6665 240 58.9998 240H25.6665C11.9998 240 0.666504 251.333 0.666504 265C0.666504 278.667 11.9998 290 25.6665 290Z"
-                            fill="currentColor"></path>
-                        </svg></div>
-                    </div>
-                    <div class="button-text-51 is-default">EXPLORE</div>
-                  </div>
-                </button><a data-w-id="f58d1989-2c61-8910-ec79-739cb7533789" href="#"
-                  class="button-block-17 color-white w-inline-block">
-                  <div
-                    style="-webkit-transform:translate3d(-180%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-180%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-180%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-180%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                    class="button-icon-wrap-17 is-left">
-                    <div class="button-text-16-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                          d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                          fill="currentColor"></path>
-                      </svg></div>
-                  </div>
-                  <div
-                    style="-webkit-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(0px, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                    class="button-text-17">Read more</div>
-                  <div class="button-icon-wrap-17 is-right">
-                    <div class="button-text-16-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                          d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                          fill="currentColor"></path>
-                      </svg></div>
-                  </div>
-                </a><a data-w-id="3573ddac-2c39-5860-83fb-ab99620cafce" href="#" class="button-block-30 w-inline-block">
-                  <div style="opacity:1" class="button-text-30">Get in
-                    touch</div>
-                  <div style="background-color:rgb(17,17,22)" class="button-icon-wrap-30">
-                    <div
-                      style="-webkit-transform:translate3d(0rem, 0rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(325deg) skew(0, 0);-moz-transform:translate3d(0rem, 0rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(325deg) skew(0, 0);-ms-transform:translate3d(0rem, 0rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(325deg) skew(0, 0);transform:translate3d(0rem, 0rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(325deg) skew(0, 0);color:rgba(240,240,240,0.5)"
-                      class="button-text-30-icon w-embed"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                          d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                          fill="currentColor"></path>
-                      </svg></div>
-                    <div
-                      style="-webkit-transform:translate3d(-2rem, 2rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-2rem, 2rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-2rem, 2rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-2rem, 2rem, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                      class="button-text-30-icon is-absolute w-embed"><svg xmlns="http://www.w3.org/2000/svg"
-                        height="1em"
-                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                          d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                          fill="currentColor"></path>
-                      </svg></div>
-                  </div>
-                </a></div>
+ <!-- start the block contenr end  -->
 
 
+<div class="base_content-wrap">
+  <div  class="scroll_content-wrap">
+    <div class="scroll_content-row">
+     
 
-
-
-
-              <div class="scroll_content-item">
-                <div class="collection-span">collection</div><a data-w-id="d2c7a6a5-4f53-2e5a-7944-f10bbb52d3b8"
-                  href="#" class="button-hover-50 primary is-default w-inline-block">
-                  <div class="button-text-50 is-default">Name frist</div>
-                  <div class="button-dot-50">
-                    <div class="dot-50 is-default"></div>
-                    <div
-                      style="-webkit-transform:translate3d(-120%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-120%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-120%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-120%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                      class="button-icon-50 w-embed"><svg xmlns="http://www.w3.org/2000/svg" height="1em"
-                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                          d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                          fill="currentColor"></path>
-                      </svg></div>
-                  </div>
-                </a><a data-w-id="37b66c3f-8daa-9163-be13-a8eb5feb53b5" href="#"
-                  class="button-hover-50 solid is-default w-inline-block">
-                  <div class="button-text-50 is-default">Prize</div>
-                  <div class="button-dot-50">
-                    <div class="dot-50 is-default is-dark"></div>
-                    <div
-                      style="-webkit-transform:translate3d(-120%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-120%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-120%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-120%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                      class="button-icon-50 w-embed"><svg xmlns="http://www.w3.org/2000/svg" height="1.25rem"
-                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                          d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                          fill="currentColor"></path>
-                      </svg></div>
-                  </div>
-                </a><a data-w-id="ef853a17-02f0-70ae-2782-6cadec0efd05" href="#"
-                  class="button-hover-50 text-icon is-default w-inline-block">
-                  <div class="button-text-50 is-default">Duration</div>
-                  <div class="button-dot-50">
-                    <div class="dot-50 is-default"></div>
-                    <div
-                      style="-webkit-transform:translate3d(-120%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-moz-transform:translate3d(-120%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);-ms-transform:translate3d(-120%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0);transform:translate3d(-120%, 0, 0) scale3d(1, 1, 1) rotateX(0) rotateY(0) rotateZ(0) skew(0, 0)"
-                      class="button-icon-50 w-embed"><svg xmlns="http://www.w3.org/2000/svg" height="1.25rem"
-                        viewBox="0 0 448 512"><!--! Font Awesome Free 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-                        <path
-                          d="M438.6 278.6c12.5-12.5 12.5-32.8 0-45.3l-160-160c-12.5-12.5-32.8-12.5-45.3 0s-12.5 32.8 0 45.3L338.8 224 32 224c-17.7 0-32 14.3-32 32s14.3 32 32 32l306.7 0L233.4 393.4c-12.5 12.5-12.5 32.8 0 45.3s32.8 12.5 45.3 0l160-160z"
-                          fill="currentColor"></path>
-                      </svg></div>
-                  </div>
-                </a>
-              </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-              <div style="width:0px" class="button-bg-wrap-06"></div>
-              </a>
+      <!-- पहला content -->
+      <div class="scroll_content-item">
+        <a href="#" class="button-hover-50 primary is-default w-inline-block">
+          <div class="button-text-50 is-default">Agripreneur Lite</div>
+          <div class="button-dot-50">
+            <div class="dot-50 is-default"></div>
+            <div class="button-icon-50 w-embed">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                <path d="M438.6 278.6c12.5-12.5..."></path>
+              </svg>
             </div>
           </div>
-        </div>
+        </a>
+
+        <button class="button-hover-51 is-default">
+          <div class="button-inner-51">
+            <div class="button-icon-wrap-51">
+              <div class="button-icon-51 w-embed">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="16" viewBox="0 0 693 531" fill="none">
+                  <path d="M518.983 132.708L471.983..."></path>
+                </svg>
+              </div>
+            </div>
+            <div class="button-text-51 is-default">Prize - ₹7000/ </div>
+          </div>
+        </button>
+
+        <a href="#" class="button-block-25 w-inline-block">
+          <div class="button-text-25">Duration - 1095 Days</div>
+        </a>
+      </div>
+       
+
+      <!-- thisd container  -->
+
+      <div class="scroll_content-item">
+        <a href="#" class="button-hover-50 primary is-default w-inline-block">
+          <div class="button-text-50 is-default">Agripreneur Pro</div>
+          <div class="button-dot-50">
+            <div class="dot-50 is-default"></div>
+            <div class="button-icon-50 w-embed">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                <path d="M438.6 278.6c12.5-12.5..."></path>
+              </svg>
+            </div>
+          </div>
+        </a>
+
+        <button class="button-hover-51 is-default">
+          <div class="button-inner-51">
+            <div class="button-icon-wrap-51">
+              <div class="button-icon-51 w-embed">
+                <svg xmlns="http://www.w3.org/2000/svg" width="22" height="16" viewBox="0 0 693 531" fill="none">
+                  <path d="M518.983 132.708L471.983..."></path>
+                </svg>
+              </div>
+            </div>
+            <div class="button-text-51 is-default">Prize - ₹1.50,000/</div>
+          </div>
+        </button>
+
+        <a href="#" class="button-block-25 w-inline-block">
+          <div class="button-text-25">Duration - 1095 Days</div>
+        </a>
+      </div>
+      <!-- दूसरा content -->
+      <div class="scroll_content-item">
+        <div class="collection-span">collection</div>
+        <a href="#" class="button-hover-50 primary is-default w-inline-block">
+          <div class="button-text-50 is-default">Mega Agripreneur</div>
+          <div class="button-dot-50">
+            <div class="dot-50 is-default"></div>
+            <div class="button-icon-50 w-embed">
+              <svg xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+                <path d="M438.6 278.6c12.5-12.5..."></path>
+              </svg>
+            </div>
+          </div>
+        </a>
+        <a href="#" class="button-hover-50 solid is-default w-inline-block">
+          <div class="button-text-50 is-default">Prize - ₹7,00,000/</div>
+        </a>
+        <a href="#" class="button-hover-50 text-icon is-default w-inline-block">
+          <div class="button-text-50 is-default">Duration - 1825 Days</div>
+        </a>
+      </div>
+
+      
+    </div>
+  </div>
+</div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ <!-- contener block setup end -->
 
         </div>
         <div class="section_base">
@@ -3303,39 +2670,11 @@
                           </div>
                         </div>
                         <div class="cta_list-row">
-                          <!-- <div
-                                id="w-node-_24b0610e-ce6f-e02c-8058-eb66b9f09a8d-0939382f"
-                                class="cta_list-icon">
-                                <div class="cta_list-icon w-embed"><svg
-                                    xmlns="http://www.w3.org/2000/svg"
-                                    width="14	"
-                                    height="14" viewBox="0 0 24 24" fill="none">
-                                    <path
-                                      d="M8.24692 8.70865V5.4473C8.24692 4.14254 8.24692 3.48968 8.50085 2.99133C8.7242 2.55296 9.08034 2.19682 9.51871 1.97347C10.017 1.71954 10.6699 1.71954 11.9747 1.71954H18.4979C19.8026 1.71954 20.4547 1.71954 20.953 1.97347C21.3913 2.19682 21.7481 2.55296 21.9714 2.99133C22.2254 3.48968 22.2254 4.14205 22.2254 5.44681V11.97C22.2254 13.2748 22.2254 13.9272 21.9714 14.4255C21.7481 14.8638 21.391 15.2208 20.9527 15.4441C20.4548 15.6978 19.8034 15.6978 18.5012 15.6978H15.236M8.24692 8.70865H4.98557C3.68081 8.70865 3.02794 8.70865 2.5296 8.96258C2.09123 9.18593 1.73509 9.54207 1.51174 9.98044C1.25781 10.4788 1.25781 11.1317 1.25781 12.4364V18.9596C1.25781 20.2643 1.25781 20.9164 1.51174 21.4147C1.73509 21.8531 2.09123 22.2099 2.5296 22.4332C3.02746 22.6869 3.67953 22.6869 4.98174 22.6869H11.5127C12.8149 22.6869 13.466 22.6869 13.9639 22.4332C14.4022 22.2099 14.759 21.8527 14.9823 21.4144C15.236 20.9165 15.236 20.2652 15.236 18.963V15.6978M8.24692 8.70865H11.5087C12.8135 8.70865 13.4656 8.70865 13.9639 8.96258C14.4022 9.18593 14.759 9.54207 14.9823 9.98044C15.236 10.4783 15.236 11.1304 15.236 12.4326V15.6978"
-                                      stroke="currentColor" stroke-width="2"
-                                      stroke-linecap="round"
-                                      stroke-linejoin="round">
-                                    </path>
-                                  </svg></div>
-                              </div> -->
+                          
 
                         </div>
                         <div class="cta_list-row">
-                          <!-- <div
-                                id="w-node-_24b0610e-ce6f-e02c-8058-eb66b9f09a93-0939382f"
-                                class="cta_list-icon">
-                                <div class="cta_list-icon w-embed"><a><svg
-                                      xmlns="http://www.w3.org/2000/svg"
-                                      width="14"
-                                      height="14" viewBox="0 0 24 24"
-                                      fill="none">
-                                      <path
-                                        d="M11 3.99998H4C3.46957 3.99998 2.96086 4.2107 2.58579 4.58577C2.21071 4.96084 2 5.46955 2 5.99998V20C2 20.5304 2.21071 21.0391 2.58579 21.4142C2.96086 21.7893 3.46957 22 4 22H18C18.5304 22 19.0391 21.7893 19.4142 21.4142C19.7893 21.0391 20 20.5304 20 20V13M18.5 2.49998C18.8978 2.10216 19.4374 1.87866 20 1.87866C20.5626 1.87866 21.1022 2.10216 21.5 2.49998C21.8978 2.89781 22.1213 3.43737 22.1213 3.99998C22.1213 4.56259 21.8978 5.10216 21.5 5.49998L12 15L8 16L9 12L18.5 2.49998Z"
-                                        stroke="currentColor" stroke-width="2"
-                                        stroke-linecap="round"
-                                        stroke-linejoin="round"></path>
-                                    </svg></a></div>
-                              </div> -->
+                         
 
                         </div>
                         <div class="cta_list-row">
@@ -3655,43 +2994,13 @@
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5CWM69JZ" height="0" width="0"
       style="display:none;visibility:hidden"></iframe></noscript>
   <!-- End Google Tag Manager (noscript) -->
-  <script>
-    // get all the copy buttons
-    const copyButtons = document.querySelectorAll("[wb-data=copy-button]");
+  
 
-    // iterate over each copy button
-    copyButtons.forEach((copyButton) => {
-      // listen for click on each copy button
-      copyButton.addEventListener("click", (event) => {
-        const buttonText = copyButton.querySelector('[wb-data="text"]');
+ 
 
-        // change button text to inform user operation in progress
-        buttonText.textContent = "Copying...";
-
-        // define function to copy
-        const copyJson = (event) => {
-          event.preventDefault();
-          const componentJson = copyButton.querySelector('[wb-data="json"]')
-            .textContent;
-          event.clipboardData.setData("application/json", componentJson);
-        };
-
-        // listen for copy
-        document.addEventListener("copy", copyJson);
-        // execute a copy command
-        document.execCommand("copy");
-        // remove copy listener (to allow normal copy/paste again)
-        document.removeEventListener("copy", copyJson);
-
-        // after 1 second, set button text back
-        setTimeout(() => {
-          buttonText.textContent = "Copied!";
-        }, 800);
-      });
-    });
-  </script>
 
   <!-- translate ka js add kar diya hai  -->
+   <script src="js/script.js"></script>
   <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 
 </body>
