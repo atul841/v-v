@@ -8194,7 +8194,7 @@ figcaption {
 .scroll_content-row {
   grid-column-gap: 1rem;
   grid-row-gap: 1rem;
-  flex-wrap: nowrap;
+  flex-wrap: nowrap;  
   flex: none;
   justify-content: space-around;
   align-items: flex-start;
