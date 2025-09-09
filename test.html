@@ -1,80 +1,57 @@
-<h1>My Website</h1>
-<p>This is sample English content. Click Russian to translate this page.</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<title>Smooth Curved Arrow – Left to Right Loop</title>
+<style>
+  /* Scale the arrow: change width only; vector stays crisp */
+  #arrow-svg { width: 720px; height: auto; display: block; margin: 6rem auto; }
 
-<!-- Custom buttons -->
-<div class="lang-switch">
-  <button id="btn-en" type="button">English</button>
-  <button id="btn-ru" type="button">Russian</button>
-</div>
-
-<!-- Google Translate mount point (dropdown yahan inject hota hai) -->
-<div id="google_translate_element"></div>
-
-<script>
-  // 1) Widget init
-  function googleTranslateElementInit() {
-    new google.translate.TranslateElement(
-      {
-        pageLanguage: "en",
-        includedLanguages: "en,ru",
-        autoDisplay: false,
-      },
-      "google_translate_element"
-    );
+  /* The white rect inside the mask grows from 0 → full width, then resets */
+  .mask-wipe {
+    animation: wipe 2.8s linear infinite;
   }
 
-  // 2) Helper: dropdown (goog-te-combo) ko reliably pakdo (late load hota hai)
-  function getCombo(maxWaitMs = 5000) {
-    return new Promise((resolve, reject) => {
-      const existing = document.querySelector(".goog-te-combo");
-      if (existing) return resolve(existing);
-
-      const obs = new MutationObserver(() => {
-        const el = document.querySelector(".goog-te-combo");
-        if (el) {
-          obs.disconnect();
-          resolve(el);
-        }
-      });
-      obs.observe(document.body, { childList: true, subtree: true });
-
-      setTimeout(() => {
-        obs.disconnect();
-        const el = document.querySelector(".goog-te-combo");
-        el ? resolve(el) : reject(new Error("Translate dropdown not found"));
-      }, maxWaitMs);
-    });
+  /* Smooth draw from left to right; quick reset to loop again */
+  @keyframes wipe {
+    0%   { width: 0px; }
+    90%  { width: 1200px; }  /* must be >= viewBox width */
+    100% { width: 0px; }
   }
 
-  // 3) Programmatic language switch
-  async function setLang(lang) {
-    try {
-      const combo = await getCombo();
-      if (combo.value === lang) {
-        // same lang selected; force change
-        combo.dispatchEvent(new Event("change"));
-        return;
-      }
-      combo.value = lang;
-      combo.dispatchEvent(new Event("change"));
-      document.body.classList.add("translating");
-    } catch (e) {
-      console.error(e);
-      alert("Translate widget load nahi hua. Neeche debugging steps dekho.");
-    }
-  }
+  body { background:#fff; }
+</style>
+</head>
+<body>
 
-  // 4) Buttons wire-up
-  document
-    .getElementById("btn-en")
-    .addEventListener("click", () => setLang("en"));
-  document
-    .getElementById("btn-ru")
-    .addEventListener("click", () => setLang("ru"));
+<svg id="arrow-svg" viewBox="0 0 1200 700" xmlns="http://www.w3.org/2000/svg">
 
-  // 5) Required Google script (HTTPS use karo)
-</script>
-<script
-  src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"
-  async=""
-></script>
+  <!-- Arrowhead definition (auto-orients to curve and scales with stroke) -->
+  <defs>
+    <marker id="arrowhead" viewBox="0 0 10 10" refX="9.5" refY="5"
+            orient="auto" markerUnits="strokeWidth" markerWidth="1.8" markerHeight="1.1">
+      <path d="M0,0 L10,5 L0,10 Z" fill="#0d4f0d"></path>
+    </marker>
+
+    <!-- Reveal mask: a white rectangle that grows left → right -->
+    <mask id="reveal" maskUnits="userSpaceOnUse" x="0" y="0" width="1200" height="700">
+      <!-- start with nothing visible -->
+      <rect x="0" y="0" width="0" height="700" fill="#fff" class="mask-wipe"></rect>
+    </mask>
+  </defs>
+
+  <!-- Group the arrow so the mask reveals both shaft and head together -->
+  <g mask="url(#reveal)">
+    <!-- Curved shaft (adjust stroke to match thickness) -->
+    <path d="M 90 420 C 340 600, 760 560, 1010 365"
+          fill="none"
+          stroke="#0d4f0d"
+          stroke-width="54"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          marker-end="url(#arrowhead)"/>
+  </g>
+</svg>
+
+</body>
+</html>

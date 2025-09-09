@@ -245,29 +245,15 @@ a,
   box-shadow: 0 2px 10px rgba(0,0,0,0.08);
 }
 
-.text-size-regular.subheader {
-  font-size: 18px;           /* jo size pehle hai usi pe chhodo */
-  line-height: 1.6;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
+
 
 /* Pop effect on hover */
-.text-size-regular.subheader:hover {
-  transform: scale(1.05); /* thoda bada hoga */
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-}
 
 
-@keyframes popEffect {
-  0%   { transform: scale(1);   }
-  50%  { transform: scale(1.15); }
-  100% { transform: scale(1);   }
-}
 
-.text-size-regular.subheader {
-  display: inline-block;                 /* transform ke liye zaroori */
-  animation: popEffect 1.5s ease-in-out infinite;
-}
+
+
+
 
 
 /* Base container */
@@ -640,4 +626,62 @@ a,
 /* scrolling option add  */
 
 
+
+
+
+
+/* ------- base ------- */
+.pog{ max-width: 1200px; margin: 0 auto; padding: 32px 20px 56px; font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif; color:#0f1015; }
+.pog-title{ font-weight:800; font-size: clamp(28px, 4.2vw, 56px); line-height:1.05; text-align:center; margin-bottom: 8px; }
+.pog-sub{ text-align:center; color:#5c6167; margin-bottom: 18px; }
+.pog-toprow{ display:flex; align-items:center; justify-content:space-between; gap:16px; margin: 8px 0 22px; }
+.pog-kicker{ position:relative; font-weight:700; color:#6a6f73; display:flex; align-items:center; gap:10px; }
+.pog-squiggle{ width:80px; height:auto; }
+.pog-cta{ display:inline-flex; align-items:center; gap:8px; padding:12px 18px; border:1.5px solid #1b1c22; border-radius:999px; color:#0f1015; text-decoration:none; font-weight:600; }
+
+/* ------- grid ------- */
+.pog-grid{ display:grid; grid-template-columns: repeat(4, minmax(220px, 1fr)); gap: 28px; }
+.pog-card{ border-radius:18px; min-height:280px; display:flex; }
+.pog-card .pog-card-body{ padding:32px; display:flex; flex-direction:column; gap:14px; }
+.pog-card.is-light{ background:#fff; box-shadow: 0 1px 0 1px #ececec inset; }
+.pog-card.is-dark{ background:#121318; color:#e8eaf0; }
+.pog-card.is-dark .pog-p{ color:#ccd0d6; }
+
+.pog-h3{ font-weight:800; font-size:20px; }
+.pog-p{ color:#656a70; line-height:1.5; }
+.pog-accent{ color:#17c964; font-weight:800; }
+
+/* icon circle (card-1) */
+.pog-icon{ width:44px; height:44px; display:grid; place-items:center; border:2px solid #1b1c22; border-radius:999px; color:#1b1c22; }
+
+/* growth row */
+.pog-growth{ display:flex; align-items:center; justify-content:space-between; gap:12px; margin-top:auto; color:#1b1c22; }
+.pog-growth svg{ flex:1 1 auto; color:#00ff6e; }
+.pog-card.is-dark .pog-growth{ color:#e8eaf0; }
+.pog-card.is-dark .pog-growth svg{ color:#00ff6e; }
+.pog-growth.invert span:last-child{ color:#00ff6e; }
+
+/* responsive */
+@media (max-width: 1100px){
+  .pog-grid{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 640px){
+  .pog-toprow{ flex-direction:column; align-items:flex-start; gap:12px; }
+  .pog-grid{ grid-template-columns: 1fr; }
+}
+
+.pog-card{
+  transition: transform .28s ease, box-shadow .28s ease, filter .28s ease;
+  will-change: transform;
+  transform-origin: center center;
+}
+
+/* desktop hover only */
+@media (hover:hover) and (pointer:fine){
+  .pog-card:hover{
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 18px 40px rgba(0,0,0,.12);
+    z-index: 2;
+  }
+}
 

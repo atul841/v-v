@@ -2627,7 +2627,8 @@ figcaption {
   background-image: url(../images/65f2d866372c85372dbbb507_BGG.svg);
   background-position: 100% 0;
   background-repeat: no-repeat;
-  background-size: contain;
+  
+  height: 600px;
 }
 .fs-styleguide_label {
   color: #fff;
