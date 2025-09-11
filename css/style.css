@@ -700,7 +700,7 @@ a,
 .allbox img{
   flex: 0 0 auto;             /* shrink na ho */
   display: block;
-  height: 120px;              /* ek jaisi height (change kar sakte ho) */
+  height: 300px;              /* ek jaisi height (change kar sakte ho) */
   object-fit: cover; 
   border-radius: 20px;  
   margin: 5px;       /* crop/fit clean */
