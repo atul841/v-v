@@ -76,7 +76,7 @@ body.scrolled .section_navbar{
   <footer class="page-wrapper is--home">
     <nav class="section_navbar" style="background: linear-gradient(45deg, rgb(146,149,146) 50%, #75568f 50%);">
       <div class="navbar_component">
-        <div class="navbar_menu-wrap"><a href="/" aria-current="page" class="w-inline-block w--current"><img style="width: 200px; height: 100px;"
+        <div class="navbar_menu-wrap"><a href="/" aria-current="page" class="w-inline-block w--current"><img style="width: 100px; height: 60px;"
               src="images/logo.png" loading="lazy" alt class="image-8"></a></div>
         <div id="w-node-_013085e8-b711-872d-66ba-d0f7b35c7685-e21728cd" class="navbar_menu-wrap mobile">
           <div data-ms-content="!members" class="div-block-48"><a href="/sections"
@@ -178,227 +178,15 @@ body.scrolled .section_navbar{
   <span class="yellow-span"></span>
 </div>
 
-<style>
-  /* ====== CSS ====== */
-.text-size-regular.subheader{
-  position: relative;
-  overflow: visible;
-}
-
-/* Sentence ke niche SVG */
-.growth-svg{
-  position: relative;
-  width: 100%;
-  height: 100%;
-  top: -20px;
-  left: -2px;
-  pointer-events: none;
-}
-
-/* Path + Tip ko group kiya — group par hi wobble rotation */
-.growth-group{
-  transform-origin: 50% 50%;
-  transform-box: fill-box;
-  animation: vv-wobble 2.4s ease-in-out infinite alternate;
-}
-@keyframes vv-wobble{
-  0%   { transform: rotate(-1.2deg); }
-  100% { transform: rotate( 1.2deg); }
-}
-
-/* Line (stroke color JS se gradient banega) */
-.growth-path{
-  fill: none;
-  stroke-linecap: round;
-  stroke-dasharray: var(--len, 100);
-  stroke-dashoffset: var(--len, 100);
-}
-
-/* Triangle (start me hidden; baad me JS se show + scale) */
-.growth-tip{
-  opacity: 0;
-  transform-origin: 0 0;
-  color: rgb(73, 223, 73);
-}
-.growth-tip path{
-  /* fill JS me END_COLOR set hoga */
-}
-
-/* Motion off */
-@media (prefers-reduced-motion: reduce){
-  .growth-group{ animation: none; }
-  .growth-path{ stroke-dashoffset: 0 !important; }
-  .growth-tip{ display: none; }
+<img
+  src="./images/gif5-bg.gif"
+  alt="Loading animation"
   
-}
+  style="width: 140px; height: 60px; position: relative; margin-right: 70px; margin-top: -5px;"
+  loading="lazy"
+/>
 
-</style>
 
-<script>
-/* ====== JS ====== */
-(() => {
-  // Colors (BLACK -> GREEN gradient)
-  const START_COLOR  = '#755083';  // black
-  const END_COLOR    = 'rgb(73, 223, 73)';  // green
-
-  // Timing & sizes
-  const DURATION     = 2800;   // ms: 1 run ki speed
-  const STROKE_THIN  = 1.6;    // start me patli
-  const STROKE_THICK = 6.5;    // end me moti
-  const TIP_W        = 32;     // triangle width
-  const TIP_H        = 28;     // triangle height
-  const TIP_SHOW_AT  = 0.55;   // 55% progress par triangle dikhna shuru
-
-  const line = document.querySelector('.text-size-regular.subheader');
-  if (!line) return;  
-
-  // 7,000 & 66,000 anchors
-  function getPins(){
-    const els = Array.from(line.querySelectorAll('a, span, b, strong, i'));
-    const num = el => (el.textContent || '').replace(/[^\d]/g,'');
-    let start = els.find(e => num(e) === '7000');
-    let end   = els.find(e => num(e) === '66000');
-    if(!start || !end){
-      const withNum = els.filter(e => /\d/.test(e.textContent||''));
-      start = start || withNum[0];
-      end   = end   || withNum[1] || withNum[0];
-    }
-    return [start, end];
-  }
-
-  const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
-
-  function ensureSVG(){
-    let svg = line.querySelector('.growth-svg');
-    if(!svg){
-      svg = document.createElementNS('http://www.w3.org/2000/svg','svg');
-      svg.classList.add('growth-svg');
-      svg.setAttribute('preserveAspectRatio','none');
-      svg.innerHTML = `
-        <defs>
-          <!-- Stroke gradient BLACK -> GREEN (coords JS se set honge) -->
-          <linearGradient id="vv-stroke-grad" gradientUnits="userSpaceOnUse">
-            <stop id="vv-stop-0" offset="0"  stop-color="${START_COLOR}"/>
-            <stop id="vv-stop-1" offset="1"  stop-color="${END_COLOR}"/>
-          </linearGradient>
-        </defs>
-        <g class="growth-group">
-          <path class="growth-path" d=""/>
-          <g class="growth-tip"><path d=""/></g>
-        </g>
-      `;
-      line.appendChild(svg);
-    }
-    // tip shape (apex 0,0; base left)
-    const tipPath = svg.querySelector('.growth-tip path');
-    tipPath.setAttribute('d', `M0 0 L-${TIP_W} -${TIP_H/2} L-${TIP_W} ${TIP_H/2} Z`);
-    tipPath.setAttribute('fill', END_COLOR);
-
-    // gradient stops (in case colors change dynamically)
-    svg.querySelector('#vv-stop-0')?.setAttribute('stop-color', START_COLOR);
-    svg.querySelector('#vv-stop-1')?.setAttribute('stop-color', END_COLOR);
-
-    return {
-      svg,
-      group: svg.querySelector('.growth-group'),
-      path:  svg.querySelector('.growth-path'),
-      tip:   svg.querySelector('.growth-tip'),
-      grad:  svg.querySelector('#vv-stroke-grad')
-    };
-  }
-
-  let LEN = 100;
-
-  function draw(){
-    const [s, e] = getPins(); if(!s || !e) return;
-    const { svg, path, grad } = ensureSVG();
-
-    const R  = line.getBoundingClientRect();
-    const Rs = s.getBoundingClientRect();
-    const Re = e.getBoundingClientRect();
-
-    const w = Math.max(10, Math.round(R.width));
-    const h = 64;            // canvas height
-    const base = h - 30;     // baseline y
-    const lift = 28;         // arc height
-
-    const x1 = Rs.left + Rs.width/2 - R.left;
-    const x2 = Re.left + Re.width/2 - R.left;
-
-    svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
-
-    const dx  = Math.max(40, (x2 - x1) / 2.8);
-    const c1x = x1 + dx;
-    const c2x = x2 - dx;
-
-    // Upward swoosh
-    const d = `M ${x1} ${base} C ${c1x} ${base + lift}, ${c2x} ${base + lift}, ${x2} ${base}`;
-    path.setAttribute('d', d);
-
-    // Path length for drawing
-    LEN = Math.ceil(path.getTotalLength());
-    path.style.setProperty('--len', LEN);
-    path.style.strokeDasharray = `${LEN} ${LEN}`;
-    path.style.strokeDashoffset = `${LEN}`;
-
-    // Stroke gradient apply + orient along start→end
-    path.setAttribute('stroke', 'url(#vv-stroke-grad)');
-    grad.setAttribute('x1', x1);
-    grad.setAttribute('y1', base);
-    grad.setAttribute('x2', x2);
-    grad.setAttribute('y2', base);
-  }
-
-  // Animate: line draw + stroke width grow + tip appear (no head rotation)
-  let rafId, startTime;
-  function animate(ts){
-    if (!startTime) startTime = ts;
-    const elapsed = (ts - startTime) % DURATION;
-    const p = elapsed / DURATION;            // 0..1
-    const eased = easeOutCubic(p);
-    const L = p * LEN;
-
-    const { path, tip } = ensureSVG();
-
-    // forward draw
-    path.style.strokeDashoffset = (LEN - L);
-
-    // stroke width grow  (thin -> thick)
-    const sw = STROKE_THIN + (STROKE_THICK - STROKE_THIN) * eased;
-    path.style.strokeWidth = sw;
-
-    // triangle appear late and move (no rotate)
-    if (p >= TIP_SHOW_AT){
-      const pp = (p - TIP_SHOW_AT) / (1 - TIP_SHOW_AT);
-      const scale = 0.2 + 0.8 * easeOutCubic(pp);
-      tip.style.opacity = 1;
-      const pt = path.getPointAtLength(L);
-      tip.setAttribute('transform', `translate(${pt.x}, ${pt.y}) scale(${scale})`);
-    } else {
-      tip.style.opacity = 0;
-    }
-
-    rafId = requestAnimationFrame(animate);
-  }
-
-  function start(){
-    cancelAnimationFrame(rafId);
-    startTime = undefined;
-    draw();
-    if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
-      rafId = requestAnimationFrame(animate);
-    }
-  }
-
-  // init + resize debounce
-  let t;
-  const go = () => { clearTimeout(t); t = setTimeout(start, 80); };
-  window.addEventListener('load', go, { once: true });
-  window.addEventListener('resize', go, { passive: true });
-
-  go();
-})();
-</script>
 
 
 
@@ -426,7 +214,7 @@ body.scrolled .section_navbar{
 }
 
 
-  </style> <br>
+  </style> 
                       
                     
                     <div class="spacer-small"></div>
@@ -474,23 +262,23 @@ body.scrolled .section_navbar{
             <img src="./images/iconpro.png" alt="" style="width: 500px; height: 80px; position: relative; top: 60px;">
             <div class="allwordpro">
               <div class="word1" >
-              <h4 style="position: relative; top: -5px; ">Earning Capacity</h4>
-              <img src="./images/icontext/7.png" style="width: 30px; position: relative; top: -20px; right: 40px;" alt="">
-              <h3 style="position: relative; top:-35px; color: #feb800;"><a style="font-size: 20px; color:white ">up to</a>  1,00,000 </h3>
+              <h4 style="position: relative; top: -5px; ">Monthly Earning Capicity</h4>
+              <img src="./images/icontext/7.png" style="width: 30px; position: relative; top: -40px; right: 40px;" alt="">
+              <h3 style="position: relative; top:-35px; color: #feb800;"><a style="font-size: 20px; color:white ">up to</a>  1,00,000+ </h3>
               </div>
             
             <div class="word2" style="position: relative; right: 23px;">
-              <img src="./images/icontext/8.png" style="width: 30px; position: relative; top: -40px; right: 40px; " alt="">
-              <h4 style="position: relative; top: -75px; width: 200px; height: 40px;">Pay Back via Courses</h4>
-              <h3 style="position: relative; top: -90px; color: #feb800;">7,40,000</h3>
+              <img src="./images/icontext/8.png" style="width: 30px; position: relative; top: -53px; right: 40px; " alt="">
+              <h4 style="position: relative; top: -85px; width: 200px; height: 60px;">Fixed Pay Back via Courses</h4>
+              <h3 style="position: relative; top: -100px; color: #feb800;">7,40,000</h3>
             </div> 
             
             <div class="word3">
-              <img src="./images/icontext/9.png"  style="position: relative;top: -70px; width: 30px; height: 30px; right: 40px;">
-              <h4 style="position: relative; top: -105px;">Fixed Duration : <br><h3 style="position: relative; top: -102px; font-size: 23px;">1095 Days</h3></h4>
+              <img src="./images/icontext/9.png"  style="position: relative;top: -90px; width: 30px; height: 30px; right: 40px;">
+              <h4 style="position: relative; top: -130px;">Course Validity : <br><h3 style="position: relative; top: -130px; font-size: 23px;">1095 Days</h3></h4>
             </div> 
 
-            <div class="button" style="background-color: #feb800; width: 150px; height: 40PX; position: relative; left: 170PX; top: -99PX; border-radius: 20PX;">
+            <div class="button" style="background-color: #feb800; width: 150px; height: 40PX; position: relative; left: 180PX; top: -143PX; border-radius: 20PX;">
               <button style="background-color: #feb800; font-size: 20PX; font-weight: bold; border-radius: 20px;position: relative; top: 4px;">KNOW MORE</button>
             </div>
         </div>  
@@ -510,13 +298,13 @@ body.scrolled .section_navbar{
             
             <div class="word2" style="position: relative; right: 23px;">
               <img src="./images/icontext/8.png" style="width: 30px; position: relative; top: -53px; right: 33px;" alt="">
-              <h4 style="position: relative; top: -85px; font-size: 19px; color: white;">Fixed Fee Pay Back <br> via Courses upto</h4>
+              <h4 style="position: relative; top: -85px; font-size: 19px; color: white;">Fixed Fee Pay Back <br> via Courses </h4>
               <h3 style="position: relative; top: -80px; color: #feb800;">66,000</h3>
             </div> 
 
             <div class="word3">
-              <img src="./images/icontext/9.png"  style="position: relative;top: -80px; width: 30px; height: 30px; right: 35px;">
-              <h4 style="position: relative; top: -100px;">Validity : 1095 Days</h4>
+              <img src="./images/icontext/9.png"  style="position: relative;top: -78px; width: 30px; height: 30px; right: 35px;">
+              <h4 style="position: relative; top: -112px;">Course Validity : <br> 1095 Days</h4>
             </div> 
 
             <div class="button" style="background-color: #feb800; width: 150px; height: 40PX; position: relative; left: 180PX; top: -130PX; border-radius: 20PX;">
@@ -620,8 +408,7 @@ body.scrolled .section_navbar{
   }
   .allwordmega{ 
     position: relative;
-   
-    margin-left: 40px;
+    margin-left: 24px;
     top: -500px;
 
   }
@@ -1067,32 +854,32 @@ body.scrolled .section_navbar{
 
                <!-- first line -->
                 <div class="firstline" style="position: relative; right: 50px;top: 360px;" >
-                  <div class="iconfrist" style="position: relative; top: -140px; right: 450px;">
-                  <img src="./images/abouticon.png" alt=""  style="width: 55px; height: 80px; margin-right: 50px;">
-                <div class="base_text1" style="position: relative; right: 20px;">
-                 Plant knowledge, <br> harvest wealth.
+                  <div class="iconfrist" style="position: relative; top: -130px; right: 450px;">
+                  <img src="./images/abouticon.png" alt=""  style="width: 60px; height: 87px; margin-right: 50px;">
+                <div class="base_text1" style="position: relative; right: 30px; top: 8px;">
+                 Plant knowledge, <br> <a style="position: relative; left: 4px;">harvest wealth.</a>
                 </div>
               </div>  
 
               <div class="iconsecond" style="position: relative; left: -100px; top: -270px ;">
-                <img src="./images/about3.png" alt="" style="width: 80px; height: 85px; position: relative; ">
-                <div class="base_text2" style="position: relative; right: 20px;" >
-                 Plant knowledge, <br> harvest wealth.
+                <img src="./images/about3.png" alt="" style="width: 84px; height: 89px; position: relative; ">
+                <div class="base_text2" style="position: relative; right: 20px; top: 5px;" >
+                 Connect globally, <br> <a style="position: relative; left: 7px;">impact wealth.</a>
                 </div>
                  
               </div> 
-              <div class="iconthird" style="position: relative; top: -400px; left: 280px;">
+              <div class="iconthird" style="position: relative; top: -405px; left: 280px;">
                 <img src="./images/about4.png" alt=""style="width: 100px; height: 90px;">
-                <div class="base_text3" style="position: relative; right: 10px;">
-                 Plant knowledge, <br> harvest wealth.
+                <div class="base_text3" style="position: relative; left: -25px; top: 7px;">
+                 Achieve milestones <br><a style="position: relative; left: 25px;">with clarity.</a>
                 </div> 
               </div>
               
 
-              <div class="iconfoud" style="position: relative; top: -530px; left: 650px;">
+              <div class="iconfoud" style="position: relative; top: -538px; left: 650px;">
                 <img src="./images/about2.png" alt="" style="width: 90px; height: 80px;">
-                <div class="base_text4" style="position: relative; right: 10px;">
-                 Plant knowledge, <br> harvest wealth.
+                <div class="base_text4" style="position: relative; right: 0px; top: 7px;">
+                 Knowledge, <br><a style="position: relative; left: 10px;">that pays.</a>
                 </div>
               </div>
               </div> 
@@ -1108,76 +895,7 @@ body.scrolled .section_navbar{
 
 
 
-                <!-- <div class="base_item-block1">
-  <div class="base_icon1 w-embed" style="width:150px; height:150px;">
-  <svg xmlns="http://www.w3.org/2000/svg"
-       viewBox="0 0 24 24"
-       fill="none" stroke="currentColor"
-       stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
-       style="width:100%; height:100%; display:block;">
-    <rect x="2" y="5" width="20" height="14" rx="2" ry="2"></rect>
-    <circle cx="12" cy="12" r="3"></circle>
-    <path d="M2 9h4"></path>
-    <path d="M18 15h4"></path>
-  </svg>
-</div>
-
-
-
-  <div class="base_text1" style="font-size: 20px;">
-    Learn while you earn 
-  </div>
-</div> -->
-
-
-
-
-
-
-                <!-- <div class="base_item-block">
-  <div class="base_icon2 w-embed" style="width:150px; height:150px;">
-    <svg xmlns="http://www.w3.org/2000/svg" 
-         width="100%" height="100%" 
-         viewBox="0 0 24 24" 
-         fill="none" stroke="currentColor" 
-         stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      
-      <circle cx="6" cy="12" r="3"></circle>
-      <circle cx="18" cy="6" r="3"></circle>
-      <circle cx="18" cy="18" r="3"></circle>
-      <line x1="8.5" y1="10.5" x2="15.5" y2="7.5"></line>
-      <line x1="8.5" y1="13.5" x2="15.5" y2="16.5"></line>
-    </svg>
-  </div>
-  <div class="base_text2" style="font-size: 20px;">
-    Network with bright Mind
-  </div>
-</div> -->
-
-                <!-- <div class="base_item-block3">
-  <div class="base_icon3 w-embed" style="width:150px; height:150px;">
-   
-    <svg xmlns="http://www.w3.org/2000/svg" 
-         width="100%" height="100%" 
-         viewBox="0 0 24 24" 
-         fill="none" stroke="currentColor" 
-         stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
-      <circle cx="12" cy="12" r="3"></circle>
-      <path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 
-               1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09a1.65 
-               1.65 0 0 0-1-1.51 1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 
-               1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09a1.65 
-               1.65 0 0 0 1.51-1 1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 
-               1.65 0 0 0 1.82.33h.09a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 
-               1.65 0 0 0 1 1.51h.09a1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 
-               2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82v.09c.2.63.76 1.09 1.51 1.09H21a2 
-               2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"></path>
-    </svg>
-  </div>
-  <div class="base_text3" style="padding: 10px; font-size: 20px; width: 250px;">
-    Increase your professional portfolio
-  </div>
-</div> -->
+                
 
 
 
@@ -1191,110 +909,36 @@ body.scrolled .section_navbar{
         </div>
         <section id="items" class="background-color-white">
           <section class="section_items-try">
+
+
             <!-- Promise of Growth (DIV-only structure) -->
 <div class="pog">
 
   <div class="pog-head">
     <div class="pog-title" style="color: #868484;">Promise of Growth</div>
-    <div class="pog-sub">Even a modest beginning can lead to big outcomes with <strong>V&amp;V Agro Global</strong>.</div>
+    
+  </div> 
+  <div class="allbox" >
+    <div class="box1">
+      <img src="./images/growth1.png" alt="" style="width: 350px; height: 550px; position: relative; left: 46px;">
+    </div> 
 
-    <div class="pog-toprow">
-      <div class="pog-kicker">
-        💡 Small Start. Big Future.
-        <!-- small squiggle/arrow -->
-        <svg class="pog-squiggle" viewBox="0 0 120 40" aria-hidden="true">
-          <path d="M2,24 C30,6 60,6 118,22" fill="none" stroke="#0f1015" stroke-width="2" opacity=".35"/>
-          <path d="M110,20 l8,2 -6,6" fill="none" stroke="#0f1015" stroke-width="2" opacity=".35"/>
-        </svg>
-      </div>
+    <div class="box2">
+      <div class="box1">
+      <img src="./images/growth2.png" alt="" style="width: 350px; height: 550px; position: relative; left: 46px;">
+    </div> 
 
-      <a class="pog-cta" href="#all-interactions">View all Interactions →</a>
+    </div> 
+
+    <div class="box3">
+      <div class="box1">
+      <img src="./images/growth3.png" alt="" style="width: 350px; height: 550px; position: relative; left: 46px;">
+    </div> 
+      
     </div>
+
   </div>
 
-  <div class="pog-grid">
-    <!-- Card 1 (light) -->
-    <div class="pog-card is-light">
-      <div class="pog-card-body">
-        <div class="pog-icon">
-          <!-- bulb icon -->
-          <svg viewBox="0 0 24 24" aria-hidden="true">
-            <path d="M9 18h6M10 21h4M6 10a6 6 0 1 1 12 0c0 2.2-1.3 3.6-2.3 4.7-.5.6-.9 1.4-1 2.3H9.3c-.1-.9-.5-1.7-1-2.3C7.3 13.6 6 12.2 6 10Z"
-                  fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
-          </svg>
-        </div>
-        <div class="pog-h3">Small Start. Big Future.</div>
-        <div class="pog-p">
-          Even a modest beginning can lead to big outcomes with <strong>V&amp;V Agro Global</strong>. For example:
-        </div>
-        
-      </div>
-    </div>
-
-    <!-- Card 2 (light) -->
-    <div class="pog-card is-light">
-      <div class="pog-card-body">
-        <div class="pog-h3">Plan A</div>
-        <div class="pog-p">Invest <strong>7,000</strong> and potentially see it grow to
-          <strong class="pog-accent">66,000</strong> in just <strong>36 months</strong>.
-        </div>
-         <img src="./images/iconlite.png" alt="" style="width: 200px; height: 230px;">
-        <div class="pog-growth">
-          <span>7,000</span>
-          <!-- upward curve -->
-          <svg viewBox="0 0 120 36" aria-hidden="true">
-            <defs>
-              <marker id="pgHead1" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                <path d="M0,0 L8,4 L0,8 Z" fill="currentColor"></path>
-              </marker>
-            </defs>
-            <path d="M4,30 C45,18 75,10 116,6" fill="none" stroke="currentColor"
-                  stroke-width="2.5" marker-end="url(#pgHead1)"/>
-          </svg>
-          <span class="pog-accent">66,000</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 3 (dark) -->
-    <div class="pog-card is-dark">
-      <div class="pog-card-body">
-        <div class="pog-h3">Plan B</div>
-        <div class="pog-p">
-          Invest <strong>1,50,000</strong> and aim for about
-          <strong class="pog-accent">7,40,000</strong> in <strong>36 months</strong>.
-        </div>
-         <img src="./images/iconpro.png" alt="" style="width: 200px; height: 210px;">
-        <div class="pog-growth invert">
-          <span>1,50,000</span>
-          <svg viewBox="0 0 120 36" aria-hidden="true">
-            <defs>
-              <marker id="pgHead2" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
-                <path d="M0,0 L8,4 L0,8 Z" fill="currentColor"></path>
-              </marker>
-            </defs>
-            <path d="M4,30 C45,18 75,10 116,6" fill="none" stroke="currentColor"
-                  stroke-width="2.5" marker-end="url(#pgHead2)"/>
-          </svg>
-          <span class="pog-accent">7,40,000</span>
-        </div>
-      </div>
-    </div>
-
-    <!-- Card 4 (dark) -->
-    <div class="pog-card is-dark">
-      <div class="pog-card-body">
-        <div class="pog-h3">How is this possible?</div>
-        <div class="pog-p">
-          Through structured learning + simple monthly activities = powerful returns.
-          As you learn and complete easy tasks each month, you consistently earn rewards.
-          Over three years, those earnings add up dramatically, turning your knowledge into real wealth.
-          <br><br>
-          <em>(This “learn-and-earn” model is already empowering hundreds of thousands of people in India to boost their income while gaining skills.)</em>
-        </div>
-      </div>
-    </div>
-  </div>
 </div>
 
           </section>

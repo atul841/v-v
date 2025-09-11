@@ -685,3 +685,27 @@ a,
   }
 }
 
+.allbox{
+  display: flex;
+  flex-wrap: nowrap;          /* wrap mat karo */
+  align-items: center;        /* vertical center */
+  gap: 12px;                  /* images ke beech spacing */
+  overflow-x: auto;           /* zyada images par left-right scroll */
+  -webkit-overflow-scrolling: touch;
+  margin-top: 50px;
+  margin-right: -30px;
+  
+}
+
+.allbox img{
+  flex: 0 0 auto;             /* shrink na ho */
+  display: block;
+  height: 120px;              /* ek jaisi height (change kar sakte ho) */
+  object-fit: cover; 
+  border-radius: 20px;  
+  margin: 5px;       /* crop/fit clean */
+  padding: 9px;
+}
+
+
+

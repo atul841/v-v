@@ -208,5 +208,3 @@ document.addEventListener("DOMContentLoaded", function () {
     gtag('config', 'G-RQFY657YJ2');
 
 
-
-
