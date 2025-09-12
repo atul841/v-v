@@ -208,3 +208,96 @@ document.addEventListener("DOMContentLoaded", function () {
     gtag('config', 'G-RQFY657YJ2');
 
 
+
+
+    
+
+(function(){
+  // === settings ===
+  const TIME_ID = 'rt-time';                        // your clock span id
+  const RELOAD_EVERY_MS = 48 * 60 * 60 * 1000;      // 48 hours
+  const LS_KEY = 'vv_rt_start_at';
+
+  let reloadTimer, tickTimer;
+
+  // ---- 1) Robust live clock (IST) ----
+  function tick(){
+    const el = document.getElementById(TIME_ID);
+    if(!el){ tickTimer = setTimeout(tick, 500); return; }
+    try{
+      el.textContent = new Date().toLocaleTimeString('en-IN', {
+        hour12: false, timeZone: 'Asia/Kolkata'
+      });
+    }catch(e){
+      el.textContent = new Date().toLocaleTimeString();
+    }
+    // schedule next update at exact next second boundary (anti-drift)
+    const now = Date.now();
+    const nextIn = 1000 - (now % 1000) + 1;
+    tickTimer = setTimeout(tick, nextIn);
+  }
+
+  // ---- 2) Guaranteed reload every 48h (drift-corrected, survives throttling) ----
+  function ensureStart(){
+    let start = Number(localStorage.getItem(LS_KEY));
+    if(!start || isNaN(start)){ start = Date.now(); localStorage.setItem(LS_KEY, String(start)); }
+    return start;
+  }
+  function scheduleReload(){
+    const start = ensureStart();
+    const now = Date.now();
+    if(now - start >= RELOAD_EVERY_MS){
+      localStorage.setItem(LS_KEY, String(now));
+      location.reload();
+      return;
+    }
+    clearTimeout(reloadTimer);
+    const remaining = RELOAD_EVERY_MS - (now - start);
+    reloadTimer = setTimeout(() => {
+      localStorage.setItem(LS_KEY, String(Date.now()));
+      location.reload();
+    }, remaining);
+  }
+
+  // Resync when tab becomes visible (browsers throttle timers in background)
+  function onVisibility(){
+    if(!document.hidden){
+      clearTimeout(tickTimer);
+      tick();
+      scheduleReload();
+    }
+  }
+
+  // Safety: hourly reschedule in case of long throttling
+  function hourlyResync(){ scheduleReload(); }
+
+  // init
+  window.addEventListener('load', () => { tick(); scheduleReload(); }, { once:true });
+  document.addEventListener('visibilitychange', onVisibility, { passive:true });
+  setInterval(hourlyResync, 60*60*1000);
+})();    
+
+(function(){
+  const scroller = document.querySelector('.agri-section');
+  const prevBtn  = document.querySelector('.agri-prev');
+  const nextBtn  = document.querySelector('.agri-next');
+  if(!scroller || !prevBtn || !nextBtn) return;
+
+  function step(){
+    const card = scroller.querySelector('[class^="card"]');
+    if(!card) return window.innerWidth * 0.86;
+    const w = card.getBoundingClientRect().width;
+    const gap = parseFloat(getComputedStyle(scroller).gap || '12');
+    return w + gap;
+  }
+
+  prevBtn.addEventListener('click', () => scroller.scrollBy({ left: -step(), behavior:'smooth' }));
+  nextBtn.addEventListener('click', () => scroller.scrollBy({ left:  step(), behavior:'smooth' }));
+
+  // swipe is native; add keyboard (optional)
+  scroller.tabIndex = 0;
+  scroller.addEventListener('keydown', e => {
+    if(e.key === 'ArrowLeft')  scroller.scrollBy({ left: -step(), behavior:'smooth' });
+    if(e.key === 'ArrowRight') scroller.scrollBy({ left:  step(), behavior:'smooth' });
+  });
+})();

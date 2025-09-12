@@ -709,3 +709,687 @@ a,
 
 
 
+/* price code here  */
+
+/* 3D hover stack for pricing cards */
+.pricing_grid{
+  perspective: 1200px;          
+  transform-style: preserve-3d;
+  gap: clamp(16px, 3vw, 28px);  
+}
+
+/* base state */
+/* .pricing_grid .cta-block{
+  position: relative;           
+  transform: translateZ(0) scale(1);
+  transition: transform .28s ease, box-shadow .28s ease, z-index .1s;
+  will-change: transform;
+} */
+
+/* when grid hovered, non-hover cards move slightly back */
+.pricing_grid:hover .cta-block:not(:hover){
+  transform: translateZ(-48px) scale(.965);
+  z-index: 0;
+}
+
+/* hovered card pops forward */
+.pricing_grid .cta-block:hover{
+  transform: translateZ(64px) scale(1.03);
+  z-index: 3;
+  box-shadow: 0 18px 40px rgba(0,0,0,.28);
+}
+
+/* optional: give highlighted card a bit more pop */
+.pricing_grid .cta-block.is--highlight:hover{
+  transform: translateZ(80px) scale(1.035);
+}
+
+/* reduce motion on touch devices / small screens */
+@media (hover:none), (max-width: 768px){
+  .pricing_grid { perspective: none; }
+  .pricing_grid .cta-block,
+  .pricing_grid:hover .cta-block:not(:hover),
+  .pricing_grid .cta-block:hover{
+    transform: none !important;
+    box-shadow: none !important;
+  }
+}
+
+
+/* footer code here  */
+
+/* :root{
+  --bg1:#241342; --bg2:#2a1552;          
+  --glow1:#7b3bb5; --glow2:#4b2f86;      
+  --text:#e9e7ee; --muted:#bdb6cc;
+  --divider:rgba(255,255,255,.14);
+  --btn1:#cfeaff; --btn2:#92c7ff;       
+} */ 
+ 
+.footerbg{ 
+  background-image: url(bgimage.png);
+  
+}
+/* Global background to match screenshot */
+.partner-cta, .site-footer{
+  color:var(--text);
+  background:
+    radial-gradient(1200px 600px at 70% 0%, rgba(123,59,181,.40), transparent 60%),
+    radial-gradient(900px 500px at 20% 10%, rgba(75,47,134,.45), transparent 60%),
+    linear-gradient(180deg, var(--bg1) 0%, var(--bg2) 100%);
+}
+
+.wrap{max-width:1100px; margin:auto; padding:0 20px}
+
+/* ===== CTA strip ===== */
+.partner-cta{padding:52px 0 20px; text-align:center}
+.partner-cta h2{margin:0 0 8px; font-weight:700}
+.partner-cta p{margin:0 auto 16px; max-width:560px; color:var(--muted); font-size:14px; line-height:1.5}
+.partner-cta .cta-btn{
+  display:inline-block; padding:10px 16px; border-radius:8px; font-weight:600; font-size:14px;
+  background:linear-gradient(180deg,var(--btn1),var(--btn2)); color:#07233c; text-decoration:none;
+  box-shadow:0 8px 18px rgba(146,199,255,.3); transition:transform .15s ease, box-shadow .2s ease;
+}
+.partner-cta .cta-btn:hover{transform:translateY(-2px); box-shadow:0 12px 24px rgba(146,199,255,.35)}
+
+/* ===== Footer ===== */
+.site-footer{padding:26px 0 16px}
+.site-footer .footer-grid{
+  display:grid; gap:26px; align-items:start;
+  grid-template-columns:1.2fr repeat(4,1fr);
+}
+.site-footer .brand .logo{font-size:28px; font-weight:800; line-height:1; letter-spacing:.5px}
+.site-footer .brand .dot{color:#fff}
+.site-footer .group .title{
+  color:var(--muted); font-size:12px; letter-spacing:.15em; margin-bottom:10px; text-transform:uppercase;
+}
+.site-footer .list{display:grid; gap:8px}
+.site-footer .list a{color:var(--text); text-decoration:none; font-size:14px; opacity:.9}
+.site-footer .list a:hover{opacity:1}
+
+/* Social round icons (placeholders) */
+.site-footer .social{display:flex; gap:10px}
+.site-footer .social .ico{
+  width:32px; height:32px; border-radius:50%;
+  background:rgba(255,255,255,.1); border:1px solid var(--divider); display:inline-block;
+}
+
+/* Bottom bar */
+.site-footer .bar{
+  display:flex; justify-content:space-between; align-items:center; gap:16px;
+  margin-top:22px; padding-top:14px; border-top:1px solid var(--divider);
+}
+.site-footer .bar small{color:var(--muted)}
+.site-footer .bar .policy{color:#b6c9ff; text-decoration:none; font-size:13px}
+
+/* ===== Responsive ===== */
+@media (max-width:1000px){
+  .site-footer .footer-grid{grid-template-columns:1.2fr 1fr 1fr}
+}
+@media (max-width:720px){
+  .partner-cta{padding-top:40px}
+  .site-footer .footer-grid{grid-template-columns:1fr 1fr}
+  .site-footer .brand{grid-column:1/-1}
+  .site-footer .bar{flex-direction:column; align-items:flex-start}
+}
+@media (max-width:480px){
+  .partner-cta h2{font-size:18px}
+  .partner-cta p{font-size:13px}
+  .site-footer .brand .logo{font-size:24px}
+}
+
+
+/* social media code */
+.site-footer .social .ico{
+  display:inline-flex; align-items:center; justify-content:center;
+  width:32px; height:32px; border-radius:50%;
+  background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.14);
+  text-decoration:none;
+}
+.site-footer .social .ico i{
+  font-size:14px; line-height:1; color:#fff; opacity:.9;
+  transition:opacity .15s ease, transform .15s ease;
+}
+.site-footer .social .ico:hover i{ opacity:1; transform:translateY(-1px); }
+
+
+
+/* === Footer: all sections in one horizontal row === */
+.site-footer .footer-grid{
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+  flex-wrap: nowrap;         /* ek hi line */
+  overflow-x: auto;          /* mobile par horizontal scroll */
+  -webkit-overflow-scrolling: touch;
+  padding: 16px 0;
+}
+
+.site-footer .footer-grid > .brand,
+.site-footer .footer-grid > .group{
+  flex: 0 0 auto;            /* shrink mat karo */
+  min-width: max-content;    /* title/sublinks wrap na hon */
+}
+
+/* lists vertical hi rahein (group ke andar) */
+.site-footer .list a{
+  display: block;
+  margin: 6px 0;
+  white-space: nowrap;       /* text ek line me */
+}
+
+/* social icons spacing */
+.site-footer .social .ico{ margin-right: 10px; }
+
+/* optional: bottom bar alignment */
+.site-footer .bar{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+
+.pricing_tag30 a{
+  text-decoration: line-through;
+  text-decoration-thickness: 5px;   /* line ki motai */
+  text-decoration-color: #5c4d4b;   /* brand color */
+  text-decoration-skip-ink: none;
+}
+
+
+.pricing_tag30 a{
+  display: inline-block;
+}
+.pricing_tag30 a::after{
+  content: "";   /* ← yahan apna word likho */
+  font-size: 0.6em;        /* chhota text */
+  margin-left: 8px;        /* gap */
+  opacity: .9;             /* halka */
+}
+
+
+.promo-offer{
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:12px;
+  color:rgb(67,235,67);
+  background:linear-gradient(90deg, rgba(30,130,30,.14), rgba(30,200,70,.14));
+  position:relative;
+  animation: promoPulse 2.6s ease-in-out infinite;
+}
+.promo-offer::before{
+  content:"";
+  position:absolute; inset:-6px;
+  border-radius:14px;
+  background:
+    radial-gradient(120px 60px at 20% 50%, rgba(73,223,73,.35), transparent 60%),
+    radial-gradient(160px 80px at 80% 50%, rgba(254,184,0,.28), transparent 60%);
+  filter:blur(12px);
+  animation: promoGlow 2.6s ease-in-out infinite;
+  z-index:-1;
+}
+
+@keyframes promoPulse{
+  0%   { filter:brightness(1) saturate(1); transform:translateY(0) scale(1); box-shadow:0 0 0 rgba(73,223,73,0); }
+  50%  { filter:brightness(1.12) saturate(1.12); transform:translateY(-2px) scale(1.02); box-shadow:0 10px 26px rgba(73,223,73,.28), inset 0 0 12px rgba(73,223,73,.18); }
+  100% { filter:brightness(1) saturate(1); transform:translateY(0) scale(1); box-shadow:0 0 0 rgba(73,223,73,0); }
+}
+@keyframes promoGlow{
+  0%   { opacity:.0; }
+  50%  { opacity:1; }
+  100% { opacity:.0; }
+}
+
+/* Motion preference respect */
+@media (prefers-reduced-motion: reduce){
+  .promo-offer, .promo-offer::before{ animation: none !important; }
+}
+
+
+
+
+
+
+/* real time  */
+
+/* ==== Same look & feel as promo-offer (green glow + pulse) ==== */
+.rt-monitor{
+  display:inline-block;
+  padding:8px 12px;
+  border-radius:12px;
+  color: rgb(67,235,67); /* same green */
+  background: linear-gradient(90deg, rgba(30,130,30,.14), rgba(30,200,70,.14));
+  position:relative;
+  animation: promoPulse 2.6s ease-in-out infinite;  /* same pulse */
+  font-weight: 600;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+.rt-monitor::before{
+  content:"";
+  position:absolute; inset:-6px;
+  border-radius:14px;
+  background:
+    radial-gradient(120px 60px at 20% 50%, rgba(73,223,73,.35), transparent 60%),
+    radial-gradient(160px 80px at 80% 50%, rgba(254,184,0,.28), transparent 60%); /* yellow accent */
+  filter: blur(12px);
+  animation: promoGlow 2.6s ease-in-out infinite;   /* same glow */
+  z-index:-1;
+}
+.rt-monitor .dot{
+  width:10px; height:10px; border-radius:999px;
+  background: currentColor;
+  display:inline-block; margin-right:8px;
+  animation: dotPulse 1.2s ease-in-out infinite;
+}
+.rt-monitor .pipe{ opacity:.6; margin:0 8px; }
+.rt-monitor .value{ letter-spacing:.3px; }
+.rt-monitor .time{ font-weight:500; opacity:.9; margin-left:8px; }
+
+/* Reuse the same keyframes from promo-offer (add if not present) */
+@keyframes promoPulse{
+  0%{ filter:brightness(1) saturate(1); transform:translateY(0) scale(1); box-shadow:0 0 0 rgba(73,223,73,0); }
+  50%{ filter:brightness(1.12) saturate(1.12); transform:translateY(-2px) scale(1.02); box-shadow:0 10px 26px rgba(73,223,73,.28), inset 0 0 12px rgba(73,223,73,.18); }
+  100%{ filter:brightness(1) saturate(1); transform:translateY(0) scale(1); box-shadow:0 0 0 rgba(73,223,73,0); }
+}
+@keyframes promoGlow{
+  0%{ opacity:0; } 50%{ opacity:1; } 100%{ opacity:0; }
+}
+@keyframes dotPulse{
+  0%{ transform:scale(1); box-shadow:0 0 0 0 rgba(73,223,73,.55); }
+  70%{ box-shadow:0 0 0 12px rgba(73,223,73,0); }
+  100%{ transform:scale(1); box-shadow:0 0 0 0 rgba(73,223,73,0); }
+}
+
+/* Motion preference respect */
+@media (prefers-reduced-motion: reduce){
+  .rt-monitor, .rt-monitor::before, .rt-monitor .dot{ animation: none !important; }
+}
+
+
+.section_base{ 
+      position: relative;
+    
+    }
+    .base_item-block3{ 
+      position: relative;
+      left: 380px;
+      top: 80px;
+      
+    } 
+    .base_item-block1{ 
+      position: relative;
+      right: 350px;
+      top: 80px;
+    }  
+    @media (max-width:767px){ 
+      .base_item-block{ 
+          width: 300px;
+          height: 90px;
+      }
+
+    }
+    @media (max-width:767px){ 
+      .base_icon2 { 
+        width: 10px;
+        height: 10px;
+        position: relative;
+        top: -300px;
+        right: 30px;
+      }
+    }
+    @media (max-width:767px){ 
+      .base_icon1 { 
+        width: 10px;
+        height: 10px;
+        position: relative;
+        bottom: -64px;
+        left: 350px;
+      }
+    }
+    @media (max-width:767px){ 
+      .base_icon3 { 
+        width: 10px;
+        height: 10px;
+        position: relative;
+        bottom: -4px;
+        right: 350px;
+      }
+    }
+    @media (max-width:767px){ 
+      .base_text2 { 
+        
+        position: relative;
+        top: -280px;
+        left: -20px;
+        
+      }
+    }
+     @media (max-width:767px){ 
+      .base_text1 { 
+        
+        position: relative;
+        top: 90px;
+        left: 330px;
+        
+      }
+    }
+ @media (max-width:767px){ 
+      .base_text3 { 
+        
+        position: relative;
+        
+        right: 380px;
+        
+        
+      }
+    }
+
+
+    /* 1) Container responsive: square box that scales with viewport */
+.base_icon2 {
+  width: clamp(72px, 12vw, 360px);  
+  aspect-ratio: 1 / 1;             
+}
+
+
+.base_icon2 svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.base_icon2 svg { stroke-width: 1.8; }
+
+@media (min-width: 768px) {
+  .base_icon2 svg { stroke-width: 2; }
+}
+
+@media (min-width: 1200px) {
+  .base_icon2 svg { stroke-width: 2.4; }
+  
+}
+
+
+/* ===== Footer Features — Clean, Responsive, No positioning ===== */
+.base_footer { 
+  padding: 12px 0; 
+}
+
+/* Grid: mobile=1, tablet=2, desktop=4 (one line) */
+.footer-features{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+
+  display: grid;
+  grid-template-columns: 1fr;      /* mobile default */
+   gap: 90px 66px;
+  align-items: start;
+  justify-items: center;
+}
+
+@media (min-width: 560px){
+  .footer-features{ grid-template-columns: repeat(2, 1fr); }
+}
+@media (min-width: 900px){
+  .footer-features{ grid-template-columns: repeat(4, 1fr); } /* one row */
+}
+@media (min-width: 1200px){
+  .footer-features{ column-gap: 72px; }
+}
+
+.feature{
+  text-align: center;
+  max-width: 240px;
+  margin-left: 80px;
+}
+
+/* Icons: exact size + proper fit (no distortion) */
+.footer-features .feature img{
+  width: 40px !important;
+  height: 57px !important;
+  display: block;
+  margin-bottom: 2px;
+
+  object-fit: contain;       /* poori image dikhe, crop nahi */
+  object-position: center;   /* center align */
+  -webkit-user-drag: none;   /* drag disable (optional) */
+}
+
+/* Text under icon */
+.feature p{
+  margin: 0;
+  line-height: 1.35;
+  font-weight: 600;
+  /* color: #fff;  <-- dark footer ho to enable kar lo */
+}
+.feature p span{
+  font-weight: 500;
+  opacity: .95;
+}
+
+/* Bottom bar (optional) */
+.secondline{
+  margin-top: 12px;
+  /* yahan apne hisab se border-top / text etc. add kar sakte ho */
+}
+
+/* ==== Promise of Growth (P.O.G) responsive layout ==== */
+
+/* By default: desktop/laptop — single row, no scroll */
+.pog .allbox{
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 20px;                   /* images ke beech space */
+  flex-wrap: nowrap;           /* ek hi line me rakho */
+  overflow-x: hidden;          /* koi horizontal scroll nahi */
+  white-space: normal !important; /* agar pehle nowrap laga ho to override */
+}
+
+/* boxes ko natural width pe rehne do */
+.pog .allbox > div{
+  flex: 0 0 auto;
+}
+
+/* Inline positioning/left ko neutralize karo (override inline styles) */
+.pog .allbox img{
+  position: static !important;   /* inline 'position:relative' ko hatao */
+  left: 0 !important;            /* inline 'left:46px' ko nullify */
+  display: block;
+  max-width: 100%;
+  height: auto;                  /* desktop par inline height hai to chalega; yeh safe fallback */
+}
+
+/* ===== Mobile: stack line-wise (one per row) ===== */
+@media (max-width: 768px){
+  .pog .allbox{
+    flex-wrap: wrap;            /* ab wrap allow */
+    gap: 16px;
+    justify-content: center;
+  }
+
+  .pog .allbox > div{
+    width: 100%;                /* full width row */
+    max-width: 520px;           /* optional: thoda readable width */
+  }
+
+  .pog .allbox img{
+    width: 100% !important;     /* inline fixed widths (350/380/360) override */
+    height: auto !important;    /* 650px fix ko hatao, tall images se bachav */
+    object-fit: cover;          /* aapke inline se match */
+    object-position: center;
+  }
+}
+
+/* ===== Tablet (optional): 2 per row layout ===== */
+@media (min-width: 769px) and (max-width: 1024px){
+  .pog .allbox{
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 18px 24px;
+  }
+  .pog .allbox > div{
+    flex: 0 1 calc(50% - 24px); /* 2 columns */
+  }
+  .pog .allbox img{
+    width: 100% !important;
+    height: auto !important;
+  }
+}
+
+
+/* Base safety (desktop + mobile) */
+.footerbg{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* ===== Mobile layout fixes ===== */
+@media (max-width: 768px){
+
+  /* Background wrapper: fixed inline size ko override */
+  .footerbg{
+    width: 100% !important;
+    height: auto !important;
+    padding: 24px 16px;              /* inner spacing */
+  }
+
+  /* Partner CTA: center + comfy sizes */
+  .partner-cta .wrap{ text-align: center; }
+  .partner-cta h2{
+    font-size: 20px;
+    line-height: 1.2;
+    margin: 0 0 6px;
+  }
+  .partner-cta p{
+    font-size: 14px;
+    line-height: 1.45;
+    margin: 0 0 12px;
+  }
+  .partner-cta .cta-btn{
+    display: inline-block;
+    padding: 10px 14px;
+    border-radius: 10px;
+    border: 1px solid rgba(73,176,29,.35);
+    background: rgba(73,176,29,.12);
+    text-decoration: none;
+  }
+
+  /* Footer grid: single column stack, center aligned */
+  .site-footer .footer-grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 16px;
+    text-align: center;
+  }
+
+  /* Brand logo aage rakho, size thoda compact */
+  .site-footer .footer-grid .brand{ order: -1; }
+  .site-footer .logo img{
+    width: 110px !important;
+    height: auto !important;
+  }
+
+  /* Group titles + links */
+  .site-footer .title{
+    font-size: 14px;
+    letter-spacing: .3px;
+    margin-bottom: 6px;
+  }
+  /* Inline font-sizes ko override for readability */
+  .site-footer .list a{
+    font-size: 14px !important;
+    display: inline-block;
+    margin: 4px 8px;
+  }
+
+  /* Social icons row */
+  .site-footer .social{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 12px;
+  }
+  .site-footer .social .ico{
+    width: 36px; height: 36px;
+    display: grid; place-items: center;
+    border-radius: 999px;
+    background: rgba(255,255,255,.08);
+    text-decoration: none;
+    font-size: 16px;
+  }
+
+  /* Bottom bar: center + wrap */
+  .site-footer .bar{
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* ===== (Optional) Tablet tweaks (nice 2–3 columns) ===== */
+@media (min-width: 769px) and (max-width: 1024px){
+  .site-footer .footer-grid{
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0,1fr));
+    gap: 18px 24px;
+    align-items: start;
+  }
+  .site-footer .logo img{ width: 120px !important; }
+}
+
+
+/* Center the copyright line */
+.site-footer .bar{
+  width: 100%;
+  display: flex;                 /* robust centering */
+  justify-content: center;
+  align-items: center;
+  text-align: center;            /* multi-line safety */
+  padding: 8px 0;
+}
+
+/* ensure <small> behaves predictably */
+.site-footer .bar small{
+  display: block;
+  margin: 0 auto;
+}
+
+/* (optional) if any previous styles are overriding */
+@media (max-width: 768px){
+  .site-footer .bar{ padding: 10px 0; }
+}
+
+
+/* Mobile par arrow GIF hide */
+@media (max-width: 768px){
+  img[src$="gif5-bg.gif"]{
+    display: none !important;
+  }
+}
+
+
+/* Mobile: push the button text down a bit */
+@media (max-width: 768px){
+  .header_button-wrap{
+          /* ensure margin works reliably */
+    position: relative;
+    top: 55px;
+  }
+}
+
+@media(max-width:768px){ 
+  .allbox{ 
+    position: relative;
+    right: 22px;
+  }
+}
