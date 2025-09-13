@@ -1215,7 +1215,7 @@ a,
 
   .pog .allbox > div{
     width: 100%;                /* full width row */
-    max-width: 520px;           /* optional: thoda readable width */
+    max-width: 420px;           /* optional: thoda readable width */
   }
 
   .pog .allbox img{
@@ -1510,9 +1510,11 @@ a,
 /* mobile: overlap se bachne ke liye neeche stack */
 @media (max-width: 640px){
   #vv48.deal48{
-    position: static;
+    position: relative;
     margin-top: 10px;
     width: 100%;
+    top: 140px;
+    left: 2px;
   }
 }
 
@@ -1639,9 +1641,11 @@ a,
 /* mobile: overlap se bachne ke liye neeche stack */
 @media (max-width: 640px){
   #vv485.deal485{
-    position: static;
+    position: relative;
     margin-top: 10px;
     width: 100%;
+    top: 140px;
+    left: 1px;
   }
 }
 
@@ -1940,12 +1944,92 @@ a,
 }
 
 
+@media (max-width:960px){ 
+  .base_footer_content{ 
+    position: relative;
+    right: 40px;
+  }
+}
+
+@media (max-width:960px){ 
+  .allbox{ 
+    position: relative;
+    left: 5px;
+    top: -80px;
+  }
+}
+
+.only-mobile{ 
+  display:none;                 /* desktop par chhupao */
+}
+
+@media (max-width:760px){
+  .only-mobile{
+    display:block !important;   /* mobile par dikhao */
+    
+     
+    position: relative;
+    top: 670px;  
+    left: 170px;       /* center */
+  }
+}
+
+.only-mobile2{ 
+  display:none;                 /* desktop par chhupao */
+}
+
+@media (max-width:760px){
+  .only-mobile2{
+    display:block !important;   /* mobile par dikhao */
+    
+    margin:12px auto;  
+     
+    display:block;
+    margin-top:-180px;  
+    position: relative;
+    top: -610px;
+             /* center */
+  }
+}
+
+@media (max-width:760px){
+  h2.pricing_tag{
+    position: relative;
+    right: 1px;
+    top: -20px;
+    
+    
+
+                   
+  }
+  
+}
+
+@media (max-width:760px) {
+  h2.pricing_tag .is-stricke-through{ 
+    position: relative;
+    left: 150px;
+    top: -25px;
+  }
+  
+}
 
 
 
+@media (max-width:760px){
+  #vv485{
+    position: relative;
+    top: 300px;
+  }
+}
 
 
-
+@media (max-width:760px){
+  h2.pricing_tag30{
+    position: relative;
+    top: 400px;
+  }
+}
 
 
 
