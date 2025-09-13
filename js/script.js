@@ -301,3 +301,18 @@ document.addEventListener("DOMContentLoaded", function () {
     if(e.key === 'ArrowRight') scroller.scrollBy({ left:  step(), behavior:'smooth' });
   });
 })();
+
+
+
+
+
+
+
+
+// timer that here
+
+
+
+
+
+

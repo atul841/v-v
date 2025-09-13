@@ -13,6 +13,7 @@
   <meta content="V&V Company  ✨ for Webflow" property="twitter:title">
 
   <meta content="width=device-width, initial-scale=1" name="viewport">
+   <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@400;700;800;900&display=swap" rel="stylesheet">
 
   <link href="css/hafizs-site-50bf7724.webflow.shared.35b0629f2.min.css" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com" rel="preconnect">
@@ -271,12 +272,12 @@ body.scrolled .section_navbar{
 
      <div class="card1"  > 
       <div class="button1">
-         <button style="color: rgb(2, 2, 2);">KNOW MORE</button>
+         <button style="color: rgb(2, 2, 2);"><a href="/#pricing"  class="btn-link">KNOW MORE</a></button>
       </div>
      </div> 
      <div class="card2">
       <div class="button2">
-         <button>KNOW MORE</button>
+         <button><a href="/#pricing" class="btn-link">KNOW MORE</a></button>
       </div>
 
      </div> 
@@ -284,7 +285,20 @@ body.scrolled .section_navbar{
 
      </div>
      
-     
+     <style>
+.btn-link {
+  display: inline-block;
+  color: rgb(0, 0, 0);
+        /* button जैसा background */
+            /* text color */
+  font-weight: bold;
+  
+  text-decoration: none;    /* underline हटाओ */
+  cursor: pointer;
+}
+
+
+</style>
 </div> 
 <style>
   
@@ -348,8 +362,8 @@ body.scrolled .section_navbar{
     position:relative; margin-top:10px; display:flex !important; justify-content:center; gap:16px;
   }
   .agri-btn{
-    width:44px; height:44px; border-radius:999px; border:0;
-    background:rgba(0,0,0,.55); color:#fff; font-size:24px; font-weight:700;
+    width:44px; height:44px;  border:0;
+     color:#fff; font-size:24px; font-weight:700;
     display:grid; place-items:center; box-shadow:0 6px 18px rgba(0,0,0,.25);
   }
 }
@@ -435,6 +449,9 @@ body.scrolled .section_navbar{
     right: 12px; bottom: 12px;
   }
 }
+
+
+
 
 
 
@@ -595,7 +612,7 @@ body.scrolled .section_navbar{
   .card3::before{
   content:"";
   position:absolute; inset:0;
-  background: linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,.28) 100%);
+  
   opacity: 0;
   transition: opacity .35s ease;
   pointer-events: none;
@@ -607,7 +624,7 @@ body.scrolled .section_navbar{
 /* HOVER state: card grows, bg zooms, overlay/shine active */
 .card3:hover{
   transform: translateY(-8px) scale(1.04);  
-  box-shadow: 0 18px 48px rgba(0,0,0,.35);
+  
   filter: saturate(1.06) brightness(1.05);
   background-size: 112%;            /* zoom-in on hover */
   background-position: center 42%;  /* thoda sa pan (optional) */
@@ -738,30 +755,81 @@ body.scrolled .section_navbar{
 <div class="pog">
 
   <div class="pog-head">
-    <div class="pog-title" style="color: #868484;">Promise of Growth</div>
-    
+    <div class="growth-block">
+  <h4 class="headline" style="font-weight: bold;">PROMISE OF GROWTH</h4>
+  <div class="subline" style="position: relative; top: -30px;">
+    IN <span class="num" style="position: relative; top: 15px;">3</span> EASY STEP
+  </div>
+</div>
+
+<style>
+  .growth-block {
+    text-align: center;
+    font-weight: bold;
+    color: #000;
+  }
+
+  .headline {
+    font-size: 30px;
+    margin: 0 0 8px 0; /* neeche thoda gap */
+  }
+
+  
+  .subline{
+    display: flex;                 /* words ko ek line me control kare */
+    justify-content: center;       /* poori line center */
+    align-items: baseline;         /* text baselines align (natural look) */
+    gap: 10px;                     /* IN / 3 / EASY STEP ke beech distance */
+    font-size: 30px;
+    font-weight: 700;
+    color:#000;
+  }
+  .subline .num{
+    font-size: 60px;               /* bada 3 */
+    color: #13c15d;                /* green */
+    line-height: 1;                /* vertical wobble na ho */
+  }
+</style>
+
+
   </div> 
-  <div class="allbox" >
-    <div class="box1">
-      <img src="./images/ggg.jpg" alt="" style="width: 375px; height: 650px; position: relative; left: 46px;object-fit:cover; object-position:center;">
-    </div> 
-
-    <div class="box2">
-      <div class="box1">
-      <img src="./images/ggg2.jpg" alt="" style="width: 380px; height: 650px; position: relative; left: 46px;object-fit:cover; object-position:center;">
-    </div> 
-
-    </div> 
-
-    <div class="box3">
-      <div class="box1">
-      <img src="./images/ggg3.jpg" alt="" style="width: 375px; height: 650px; position: relative; left: 46px;object-fit:cover; object-position:center; ">
-    </div> 
-      
-    </div>
-
+  <!-- WRAP -->
+   <img src="./images/arrowgro.png" alt="" style="width: 200px; height: 70px; margin-left: 260px;" class="arrow-img ">
+   
+<div class="allbox">
+  
+  <!-- cards -->
+  <div class="card" id="card1">
+    <img class="photo" src="./images/ggg.jpg" alt="page 1">
+  </div>
+  <div class="card" id="card2">
+    <img class="photo" src="./images/ggg2.jpg" alt="page 2">
+  </div>
+  <div class="card" id="card3">
+    <img class="photo" src="./images/ggg3.jpg" alt="page 3">
   </div>
 
+  
+  
+</div>
+
+   <img src="./images/arrow_flipped_vertical_horizontal.png" alt="" style="width: 200px; height: 70px; margin-left: 690px;" class="arrow-img ">
+
+   <style>
+.arrow-img {
+  width: 200px;
+  height: 70px;
+  margin-left: 690px;
+  display: block;
+}
+
+/* mobile पर hide */
+@media (max-width: 820px) {
+  .arrow-img {
+    display: none;
+  }
+}
+</style>
 </div>
 
           </section>
@@ -1331,7 +1399,146 @@ body.scrolled .section_navbar{
                     <div class="cta_button-wrap">
                       
                       <div class="cta_pric-block">
+                        <img src="./images/pricekeepas/14.png" 
+     class="promo-fade1" 
+     alt="promo image1">
+ <style>
+  .promo-fade1 {
+  max-width: 200px;   /* box ke andar control karne ke लिए */
+  height: auto;       /* proportion maintain karega */
+  display: block;
+  position: relative;
+  top: 40px;
+  right: 40px;
+} 
+@media(max-width:650px){ 
+  .promo-fade1{ 
+    position: relative;
+    top: 10px;
+  }
+}
+
+ </style>
+                        
+
+                        <div class="rt-monitor" data-status="live" style="position: relative; right: -215px; top: -70px;">
+  <span class="dot" aria-hidden="true"></span>
+  <strong>OFFER ENDS IN</strong>
+   
+  
+  
+</div>                    
+<style>
+  @media (max-width:650px){ 
+    .dot{ 
+      position: relative;
+      top: -900px;
+    }
+  }
+</style>    
+                             <h2 class="pricing_tag30"><a>3,00,000 </a></h2>
+
+                             <div id="vv485" class="deal485" data-hours="48" aria-live="polite">
+                            <div class="cell"><div class="num dd" style="font-weight:bolder;">00</div><div class="lbl" style="font-family: 'Antonio'; font-size: 19px;">DAYS</div></div>
+                             <div class="cell"><div class="num hh" style="font-weight: bolder;">00</div><div class="lbl" style="font-family: 'Antonio'; font-size: 19px;">HOURS</div></div>
+                             <div class="cell"><div class="num mm" style="font-weight: bolder;">00</div><div class="lbl"style="font-family: 'Antonio'; font-size: 19px;">MIN</div></div>
+                             <div class="cell"><div class="num ss" style="font-weight: bolder;">00</div><div class="lbl"style="font-family: 'Antonio'; font-size: 19px;">SEC</div></div>
+                          </div>
+                                        <script>
+(function(){
+  const ROOT = document.getElementById('vv485');
+  if(!ROOT) return;
+
+  const HOURS    = +ROOT.dataset.hours || 48;          // 48h by default
+  const DURATION = HOURS * 60 * 60 * 1000;
+  const KEY      = (ROOT.id || 'vv485') + '_start_at';  // per-timer key
+
+  /* ---- storage (localStorage + cookie fallback) ---- */
+  function setStart(t){
+    try{ localStorage.setItem(KEY, String(t)); }
+    catch(e){
+      document.cookie = KEY + '=' + encodeURIComponent(String(t)) +
+        '; max-age=' + Math.ceil(DURATION/1000) + '; path=/; SameSite=Lax';
+    }
+  }
+  function getCookie(name){
+    if(!document.cookie) return null;
+    const parts = document.cookie.split('; ');
+    for(const part of parts){
+      const eq = part.indexOf('=');
+      if(eq < 0) continue;
+      const k = part.slice(0, eq);
+      if(k === name) return decodeURIComponent(part.slice(eq+1));
+    }
+    return null;
+  }
+  function getStart(){
+    try{
+      const v = localStorage.getItem(KEY);
+      if(v !== null) return Number(v);
+    }catch(e){}
+    const c = getCookie(KEY);
+    return c ? Number(c) : null;
+  }
+  function clearStart(){
+    try{ localStorage.removeItem(KEY); }catch(e){}
+    document.cookie = KEY + '=; max-age=0; path=/; SameSite=Lax';
+  }
+
+  /* ---- first visit wins ---- */
+  let start = getStart();
+  if(!start || isNaN(start)){ start = Date.now(); setStart(start); }
+  const end = start + DURATION;
+
+  /* ---- DOM refs ---- */
+  const dd = ROOT.querySelector('.dd');
+  const hh = ROOT.querySelector('.hh');
+  const mm = ROOT.querySelector('.mm');
+  const ss = ROOT.querySelector('.ss');
+  const pad = n => String(n).padStart(2,'0');
+
+  let tmo;
+  function render(){
+    const now  = Date.now();
+    let left   = Math.max(0, end - now);
+
+    if(left <= 0){
+      // expired UI: show 00s (keeps layout identical)
+      if(dd) dd.textContent = '00';
+      if(hh) hh.textContent = '00';
+      if(mm) mm.textContent = '00';
+      if(ss) ss.textContent = '00';
+      // (optional) auto-reset next lines:
+      // clearStart(); setStart(Date.now()); location.reload();
+      return;
+    }
+
+    const days  = Math.floor(left / 86400000); left -= days  * 86400000;
+    const hours = Math.floor(left / 3600000);  left -= hours * 3600000;
+    const mins  = Math.floor(left / 60000);    left -= mins  * 60000;
+    const secs  = Math.floor(left / 1000);
+
+    if(dd) dd.textContent = pad(days);
+    if(hh) hh.textContent = pad(hours);
+    if(mm) mm.textContent = pad(mins);
+    if(ss) ss.textContent = pad(secs);
+
+    clearTimeout(tmo);
+    tmo = setTimeout(render, 1000 - (Date.now() % 1000) + 2);  // drift-free
+  }
+
+  // cross-tab sync (optional)
+  window.addEventListener('storage', e => { if(e.key === KEY) location.reload(); });
+
+  // testing helper (optional): call from console to reset
+  window.vv485Reset = () => { clearStart(); location.reload(); };
+
+  render();
+})();
+</script>
                         <div class="div-block-26">
+
+                          
                           <h2 class="pricing_tag"><a>1,50,000 </a></h2>
                           <div class="pricing_strick-wrap">
                             <div class="pricing_tag is-stricke-through"><a>(one-time)</a></div>
@@ -1529,17 +1736,138 @@ body.scrolled .section_navbar{
                     <div class="cta_button-wrap">
 
                       <div class="cta_pric-block">
+                        <!-- <img src="./images/pricekeepas/13.png" class="promo-fade" alt="" style="width: 150px; height: 110px;"> -->
+                         <img src="./images/pricekeepas/13.png" 
+     class="promo-fade" 
+     alt="promo image">
+ <style>
+  .promo-fade {
+  max-width: 150px;   /* box ke andar control karne ke लिए */
+  height: auto;       /* proportion maintain karega */
+  display: block;
+  position: relative;
+  top: 44px;
+}
+@media (max-width:650px){ 
+  .promo-fade{ 
+    position: relative;
+    top: -1px;
+  }
+}
+
+ </style>
                         <!-- Real-Time Monitoring badge -->
-<div class="rt-monitor" data-status="live">
+<div class="rt-monitor" data-status="live" style="position: relative; right: -220px; top: -70px;">
   <span class="dot" aria-hidden="true"></span>
-  <strong>offer closes soon</strong>
-  <span class="pipe">|</span>
-  <span class="value" style="color: rgb(195, 38, 38);">TIME</span>
-  <span class="time" id="rt-time">--:--:--</span>
+  <strong>OFFER ENDS IN </strong>
+
+  
+  
 </div>
 
                         <h2 class="pricing_tag30"><a>30,000 </a></h2>
-                        <h4  style="margin-top: -60px; position: relative; left: 190px; color: rgb(252, 252, 252);">ProMotional Offer <br>77% off </h4>
+                        <!-- <h4  style="margin-top: -60px; position: relative; left: 190px; color: rgb(252, 252, 252);">ProMotional Offer <br>77% off </h4> -->
+                         <div id="vv48" class="deal48" data-hours="48" aria-live="polite">
+                            <div class="cell"><div class="num dd" style="font-weight:bolder;">00</div><div class="lbl" style="font-family: 'Antonio'; font-size: 19px;">DAYS</div></div>
+                             <div class="cell"><div class="num hh" style="font-weight: bolder;">00</div><div class="lbl" style="font-family: 'Antonio'; font-size: 19px;">HOURS</div></div>
+                             <div class="cell"><div class="num mm" style="font-weight: bolder;">00</div><div class="lbl"style="font-family: 'Antonio'; font-size: 19px;">MIN</div></div>
+                             <div class="cell"><div class="num ss" style="font-weight: bolder;">00</div><div class="lbl"style="font-family: 'Antonio'; font-size: 19px;">SEC</div></div>
+                          </div>
+                            
+                          <script>
+(function(){
+  const ROOT = document.getElementById('vv48');
+  if(!ROOT) return;
+
+  const HOURS    = +ROOT.dataset.hours || 48;          // 48h by default
+  const DURATION = HOURS * 60 * 60 * 1000;
+  const KEY      = (ROOT.id || 'vv48') + '_start_at';  // per-timer key
+
+  /* ---- storage (localStorage + cookie fallback) ---- */
+  function setStart(t){
+    try{ localStorage.setItem(KEY, String(t)); }
+    catch(e){
+      document.cookie = KEY + '=' + encodeURIComponent(String(t)) +
+        '; max-age=' + Math.ceil(DURATION/1000) + '; path=/; SameSite=Lax';
+    }
+  }
+  function getCookie(name){
+    if(!document.cookie) return null;
+    const parts = document.cookie.split('; ');
+    for(const part of parts){
+      const eq = part.indexOf('=');
+      if(eq < 0) continue;
+      const k = part.slice(0, eq);
+      if(k === name) return decodeURIComponent(part.slice(eq+1));
+    }
+    return null;
+  }
+  function getStart(){
+    try{
+      const v = localStorage.getItem(KEY);
+      if(v !== null) return Number(v);
+    }catch(e){}
+    const c = getCookie(KEY);
+    return c ? Number(c) : null;
+  }
+  function clearStart(){
+    try{ localStorage.removeItem(KEY); }catch(e){}
+    document.cookie = KEY + '=; max-age=0; path=/; SameSite=Lax';
+  }
+
+  /* ---- first visit wins ---- */
+  let start = getStart();
+  if(!start || isNaN(start)){ start = Date.now(); setStart(start); }
+  const end = start + DURATION;
+
+  /* ---- DOM refs ---- */
+  const dd = ROOT.querySelector('.dd');
+  const hh = ROOT.querySelector('.hh');
+  const mm = ROOT.querySelector('.mm');
+  const ss = ROOT.querySelector('.ss');
+  const pad = n => String(n).padStart(2,'0');
+
+  let tmo;
+  function render(){
+    const now  = Date.now();
+    let left   = Math.max(0, end - now);
+
+    if(left <= 0){
+      // expired UI: show 00s (keeps layout identical)
+      if(dd) dd.textContent = '00';
+      if(hh) hh.textContent = '00';
+      if(mm) mm.textContent = '00';
+      if(ss) ss.textContent = '00';
+      // (optional) auto-reset next lines:
+      // clearStart(); setStart(Date.now()); location.reload();
+      return;
+    }
+
+    const days  = Math.floor(left / 86400000); left -= days  * 86400000;
+    const hours = Math.floor(left / 3600000);  left -= hours * 3600000;
+    const mins  = Math.floor(left / 60000);    left -= mins  * 60000;
+    const secs  = Math.floor(left / 1000);
+
+    if(dd) dd.textContent = pad(days);
+    if(hh) hh.textContent = pad(hours);
+    if(mm) mm.textContent = pad(mins);
+    if(ss) ss.textContent = pad(secs);
+
+    clearTimeout(tmo);
+    tmo = setTimeout(render, 1000 - (Date.now() % 1000) + 2);  // drift-free
+  }
+
+  // cross-tab sync (optional)
+  window.addEventListener('storage', e => { if(e.key === KEY) location.reload(); });
+
+  // testing helper (optional): call from console to reset
+  window.vv48Reset = () => { clearStart(); location.reload(); };
+
+  render();
+})();
+</script>
+
+
                         <div class="div-block-26">
                           
                           <h2 class="pricing_tag"><a>7,000 </a></h2>
