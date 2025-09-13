@@ -1763,3 +1763,20 @@ a,
     max-width: 420px;
   }
 }
+
+
+
+
+
+.footerbg{
+  /* image */
+  --footer-bg: url("./images/bgimage1.png");
+  background-image: var(--footer-bg);
+  background-size: cover;        /* auto fit any screen */
+  background-position: center;   /* center crop */
+  background-repeat: no-repeat;
+
+  /* sizing */
+  width: 100%;                   /* full width */
+  min-height: clamp(280px, 40vh, 560px); /* responsive height */
+}
