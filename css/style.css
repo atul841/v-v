@@ -1492,8 +1492,8 @@ a,
 /* timer ko top-right pe chipkao */
 #vv48.deal48{
   position: absolute;
-  top: 840px;
-  right: 10px;
+  top: 831px;
+  right: 35px;
 }
 
 
@@ -1630,7 +1630,7 @@ a,
 /* timer ko top-right pe chipkao */
 #vv485.deal485{
   position: absolute;
-  top: 948px;
+  top: 932px;
   right: 19px;
 }
 
@@ -1916,6 +1916,28 @@ a,
 
 
 
+/* rt-monitor pill smaller (no HTML change) */
+.rt-monitor{
+  padding: 4px 10px !important;   /* height + width dono kam */
+  gap: 8px;  
+  margin-left: 15px;                     /* text–dot gap chhota */
+}
+.rt-monitor strong{
+  font-size: 12px;                /* text chhota */
+  letter-spacing: .3px;
+}
+.rt-monitor .dot{
+  width: 6px; 
+  height: 6px;                    /* dot chhota */
+  box-shadow: 0 0 6px #2eff74, 0 0 10px #2eff74;
+  
+}
+
+/* (optional aur chhota chahiye) */
+.rt-monitor{ 
+  transform: scale(.88); 
+  transform-origin: top right;    /* position same feel */
+}
 
 
 

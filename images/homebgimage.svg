@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2048" height="607" viewBox="0 0 2048 607" version="1.1">
+  <defs>
+    <!-- Grid line style -->
+    <style>
+      .gridline { stroke: #6b6b6b; stroke-opacity: 0.35; stroke-width: 1; }
+    </style>
+    <!-- Neon gradient for the blob -->
+    <linearGradient id="pinkGrad" x1="0%" y1="100%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#ff00ff" stop-opacity="0.9"/>
+      <stop offset="45%" stop-color="#ff34b3" stop-opacity="0.85"/>
+      <stop offset="75%" stop-color="#ff4da6" stop-opacity="0.75"/>
+      <stop offset="100%" stop-color="#ff66cc" stop-opacity="0.6"/>
+    </linearGradient>
+    <!-- Soft outer glow -->
+    <filter id="softGlow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="18" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <!-- Hard neon edge -->
+    <filter id="neonEdge" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="2.2" result="o1"/>
+      <feColorMatrix in="o1" type="matrix"
+        values="1 0 0 0 1,
+                0 1 0 0 0,
+                0 0 1 0 1,
+                0 0 0 1 0" />
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="100%" height="100%" fill="#000000"/>
+
+  <!-- Grid -->
+  <g id="grid">
+    <!-- vertical lines every 160px -->
+    <line class="gridline" x1="0" y1="0" x2="0" y2="607"/><line class="gridline" x1="160" y1="0" x2="160" y2="607"/><line class="gridline" x1="320" y1="0" x2="320" y2="607"/><line class="gridline" x1="480" y1="0" x2="480" y2="607"/><line class="gridline" x1="640" y1="0" x2="640" y2="607"/><line class="gridline" x1="800" y1="0" x2="800" y2="607"/><line class="gridline" x1="960" y1="0" x2="960" y2="607"/><line class="gridline" x1="1120" y1="0" x2="1120" y2="607"/><line class="gridline" x1="1280" y1="0" x2="1280" y2="607"/><line class="gridline" x1="1440" y1="0" x2="1440" y2="607"/><line class="gridline" x1="1600" y1="0" x2="1600" y2="607"/><line class="gridline" x1="1760" y1="0" x2="1760" y2="607"/><line class="gridline" x1="1920" y1="0" x2="1920" y2="607"/>
+    <!-- horizontal lines every 140px -->
+    <line class="gridline" x1="0" y1="0" x2="2048" y2="0"/><line class="gridline" x1="0" y1="140" x2="2048" y2="140"/><line class="gridline" x1="0" y1="280" x2="2048" y2="280"/><line class="gridline" x1="0" y1="420" x2="2048" y2="420"/><line class="gridline" x1="0" y1="560" x2="2048" y2="560"/>
+  </g>
+
+  <!-- Soft grey squares -->
+  <g fill="#8a8a8a" fill-opacity="0.45">
+    <rect x="634" y="364" width="180" height="180"/>
+    <rect x="1228" y="91" width="220" height="220" fill-opacity="0.35"/>
+    <rect x="1536" y="335" width="210" height="210" fill-opacity="0.30"/>
+  </g>
+
+  <!-- Pink diagonal blob (approximation with cubic Beziers) -->
+  <g filter="url(#softGlow)">
+    <path d="
+      M 819 597
+      C 1126 515 1474 424 1802 352
+      C 1966 315 2038 218 2038 48
+      L 2038 0
+      L 1269 212
+      C 1126 242 983 291 737 339
+      C 614 364 573 449 737 597
+      Z
+    " fill="url(#pinkGrad)"/>
+    <!-- Bright neon edge -->
+    <path d="
+      M 819 597
+      C 1126 515 1474 424 1802 352
+      " fill="none" stroke="#ff00ff" stroke-width="8" stroke-opacity="0.9" filter="url(#neonEdge)"/>
+  </g>
+</svg>
