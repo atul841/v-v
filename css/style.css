@@ -1492,8 +1492,8 @@ a,
 /* timer ko top-right pe chipkao */
 #vv48.deal48{
   position: absolute;
-  top: 730px;
-  right: 20px;
+  top: 840px;
+  right: 10px;
 }
 
 
@@ -1630,8 +1630,8 @@ a,
 /* timer ko top-right pe chipkao */
 #vv485.deal485{
   position: absolute;
-  top: 859px;
-  right: 20px;
+  top: 948px;
+  right: 19px;
 }
 
 
@@ -1780,3 +1780,236 @@ a,
   width: 100%;                   /* full width */
   min-height: clamp(280px, 40vh, 560px); /* responsive height */
 }
+
+
+
+
+/* ---- Footer: Center on laptop/desktops ---- */
+.base_footer_content{
+  width:100%;
+}
+
+/* Reset inline offsets coming from HTML (right/left/top) */
+.base_footer_content .footer-features p,
+.base_footer_content .footer-features .feature{
+  position: static !important;
+  right: auto !important;
+  left: auto !important;
+  top: auto !important;
+}
+
+/* Base layout */
+.footer-features{
+  list-style:none;
+  display:flex;
+  flex-wrap:wrap;
+  gap: 24px 40px;           /* row-gap col-gap */
+  padding:0;
+  margin:0 auto;
+  align-items:center;
+  justify-content:center;   /* center by default */
+  max-width: 1200px;        /* keep a nice line length */
+}
+
+.feature{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.feature img{
+  width:42px;               /* adjust as needed */
+  height:auto;
+  display:block;
+}
+
+.feature p{
+  margin:0;
+  line-height:1.25;
+  text-align:left;
+}
+
+.feature p span{
+  font-weight:700;
+}
+
+/* Laptop (and up) specific polish */
+@media (min-width: 1024px){
+  .footer-features{
+    justify-content:center; /* hard-center the whole row */
+  }
+  .feature p{
+    text-align:left;        /* keep text tidy next to icons */
+  }
+}
+
+/* Optional: on small screens stack vertically under icon */
+@media (max-width: 767px){
+  .feature{
+    flex-direction:row;     /* or column if you want text under icon */
+  }
+}
+
+
+
+
+
+/* Inline offsets ko nullify */
+.base_footer_content .footer-features .feature,
+.base_footer_content .footer-features p{
+  position: static !important;
+  right: auto !important;
+  left: auto !important;
+  top: auto !important;
+}
+
+/* Footer container itself center */
+.base_footer_content{
+  width:100%;
+}
+
+/* List ko center + wrap */
+.footer-features{
+  list-style:none;
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:center;     
+  align-items:center;         
+  gap:24px 40px;              
+  padding:0;
+  margin:0 auto;              
+  max-width:1200px;           
+}
+
+/* Har feature: perfect center */
+.feature{
+  display:flex;
+  flex-direction:column;      
+  align-items:center;         
+  justify-content:center;     
+  text-align:center;          
+  gap:10px;
+  min-width:160px;            
+}   
+
+/* Icon size */
+.feature img{
+  width:48px;                 /* adjust if needed */
+  height:auto;
+  display:block;
+}
+
+/* Text */
+.feature p{
+  margin:0;
+  line-height:1.25;
+  font-size:14px;
+}
+.feature p span{ font-weight:700; }
+
+/* Small screens tweak (optional) */
+@media (max-width: 480px){
+  .feature img{ width:42px; }
+  .feature p{ font-size:13px; }
+  
+}
+
+/* ======= PRICING: RESPONSIVE PATCH (no redesign, no HTML change) ======= */
+
+/* Images never overflow inside pricing cards */
+#pricing .cta-block img { max-width: 100%; height: auto; }
+
+/* Tablet & below: single-column stack, and neutralize inline offsets */
+@media (max-width: 900px){
+  /* 1) Grid ko stack karo */
+  #pricing .pricing_grid{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 22px;
+  }
+
+  /* 2) "OFFER ENDS IN" pill: inline flow me lao (inline styles override) */
+  #pricing .rt-monitor{
+    position: static !important;
+    right: auto !important;
+    left: auto !important;
+    top: auto !important;
+    margin: 6px 0 8px auto;   /* card ke andar right align */
+    display: inline-flex;
+  }
+  #pricing .rt-monitor .dot{
+    position: static !important;
+    top: auto !important;
+  }
+
+  /* 3) Promo sticker images: negative top/right ko hatao */
+  #pricing .promo-fade,
+  #pricing .promo-fade1{
+    position: static !important;
+    top: auto !important;
+    right: auto !important;
+    width: 120px !important;   /* safe, readable size */
+    height: auto !important;
+    margin: 6px 0 8px auto;    /* card ke andar right side */
+    display: block;
+  }
+
+  /* 4) Countdown bars: full width + equal cells */
+  #pricing .deal48,
+  #pricing .deal485{
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+  }
+  #pricing .deal48 .cell,
+  #pricing .deal485 .cell{
+    flex: 1;
+    min-width: 0;
+    text-align: center;
+  }
+
+  /* 5) CTA buttons: full width for easy tap */
+  #pricing .button-block-27.primary{
+    width: 100%;
+    justify-content: center;
+  }
+
+  /* 6) Card padding thoda tight (visual same, sirf spacing) */
+  #pricing .cta-block{
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+}
+
+/* Small phones: thoda extra breathing */
+@media (max-width: 480px){
+  #pricing .cta-block{ padding-left: 14px; padding-right: 14px; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

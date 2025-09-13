@@ -2625,11 +2625,12 @@ figcaption {
 }
 .page-wrapper.is--home {
   background-image: url(../images/65f2d866372c85372dbbb507_BGG.svg);
-  background-position: 100% 0;
+  background-position: 90% 0;
   background-repeat: no-repeat;
+   height: 600px;
  
-  height: 600px;
 }
+
 .fs-styleguide_label {
   color: #fff;
   background-color: #2d40ea;
