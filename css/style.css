@@ -1788,7 +1788,7 @@ a,
 
 
 
-/* ---- Footer: Center on laptop/desktops ---- */
+
 .base_footer_content{
   width:100%;
 }
@@ -1811,8 +1811,8 @@ a,
   padding:0;
   margin:0 auto;
   align-items:center;
-  justify-content:center;   /* center by default */
-  max-width: 1200px;        /* keep a nice line length */
+  justify-content:center;   
+  max-width: 1200px;        
 }
 
 .feature{
@@ -1920,7 +1920,7 @@ a,
 
 
 
-/* rt-monitor pill smaller (no HTML change) */
+
 .rt-monitor{
   padding: 4px 10px !important;   /* height + width dono kam */
   gap: 8px;  
@@ -1996,7 +1996,21 @@ a,
   h2.pricing_tag{
     position: relative;
     right: 1px;
-    top: -20px;
+    top: -50px;
+    
+    
+
+                   
+  }
+  
+}
+
+
+@media (max-width:760px){
+  h2.pricing_tag30{
+    position: relative;
+    right: 1px;
+    top: -600px;
     
     
 
@@ -2024,14 +2038,28 @@ a,
 }
 
 
-@media (max-width:760px){
+
+
+
+
+
+@media (max-width: 768px){
   h2.pricing_tag30{
-    position: relative;
-    top: 400px;
+    position: relative !important;
+    top: 80px !important;    /* yahan se niche aayega — value adjust kar sakte ho */
+           /* content ke hisaab se width */
+           font-size: 10px;
   }
 }
 
 
+@media (max-width:768px){ 
+  .rt-monitor{ 
+    position: relative !important;
+    top: 230px !important;
+    left: -10px !important;
+  }
+}
 
 
 
