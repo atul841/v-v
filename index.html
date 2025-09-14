@@ -259,13 +259,13 @@ body.scrolled .section_navbar{
   
 
 <!-- ============ AGRIPRENEUR 3-CARD SECTION ============ --> <br>
-<div class="agri-section" >
+<div class="agri-section"  >
   
      
-         <div class="agri-arrows">
-  <button class="agri-btn agri-prev" aria-label="Previous"></button>
+         <!-- <div class="agri-arrows">
+  <button class="agri-btn agri-prev" aria-label="Previous" style="position: relative;top: 40px;"></button>
   <button class="agri-btn agri-next" aria-label="Next"></button>
-</div>
+</div> -->
 
      
 
@@ -286,6 +286,11 @@ body.scrolled .section_navbar{
      </div>
      
      <style>
+      .agri-section{ 
+        position: relative;
+        top: 100x;
+      }
+
 .btn-link {
   display: inline-block;
   color: rgb(0, 0, 0);
@@ -300,7 +305,19 @@ body.scrolled .section_navbar{
 
 </style>
 </div> 
+<div class="agri-arrows">
+  <button class="agri-btn agri-prev" aria-label="Previous" style="position: relative;top: -200px; right: 149px;">◀</button>
+  <button class="agri-btn agri-next" aria-label="Next"style="position: relative;top: -200px; right: -149px;">▶</button>
+</div>
 <style>
+
+
+
+
+
+
+
+
   
   /* Buttons bottom-right on all cards (desktop+mobile) */
 .agri-section .button1,
@@ -360,6 +377,7 @@ body.scrolled .section_navbar{
   /* mobile arrows visible */
   .agri-arrows{
     position:relative; margin-top:10px; display:flex !important; justify-content:center; gap:16px;
+    width: 44px; height: 44px;
   }
   .agri-btn{
     width:44px; height:44px;  border:0;
@@ -642,8 +660,26 @@ body.scrolled .section_navbar{
 
 
 
+
+
+
+
+
+
+.agri-btn {
+  background: rgba(0,0,0,0.6);
+  border: none;
+  color: #fff;
+  padding: 10px 15px;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+
   
 </style>
+
+
 
 <script>
   (function(){
